@@ -32,6 +32,158 @@
             position: relative; 
         }
 
+
+                /* ===== Contacts Section + карты ===== */
+        .contacts-section {
+            background: var(--bg-white);
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+        }
+
+        @media (max-width: 992px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info-card {
+            background: var(--bg-cream);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+        }
+
+        .contact-info-card h3 {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--primary-navy);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-detail {
+            margin-bottom: 24px;
+        }
+
+        .contact-detail strong {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .contact-detail-value {
+            font-size: 16px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .schedule-table {
+            margin-top: 24px;
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: 14px;
+        }
+
+        .schedule-row:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-day {
+            color: var(--text-secondary);
+        }
+
+        .schedule-time {
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .schedule-row.highlight {
+            background: rgba(201, 169, 110, 0.08);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-navy);
+            color: white;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .social-link:hover {
+            background: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            height: 480px;
+            background: var(--bg-cream);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .transport-info {
+            margin-top: 28px;
+            padding: 28px;
+            background: var(--bg-cream);
+            border-radius: var(--radius-md);
+        }
+
+        .transport-info h4 {
+            font-size: 16px;
+            color: var(--primary-navy);
+            margin-bottom: 16px;
+        }
+
+        .transport-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .transport-item:last-child {
+            margin-bottom: 0;
+        }
+
         /* --- ФОНОВЫЙ СЛОЙ КОСТИ (Layer 1) --- */
         .bg-bones {
             position: absolute;
@@ -951,6 +1103,82 @@
                     </label>
                     <button type="submit" class="btn">Записаться</button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+        <section class="contacts-section" id="contacts">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title display-text">Как нас найти</h2>
+            </div>
+            
+            <div class="contacts-grid">
+                <div class="contact-info-card animate-on-scroll">
+                    <h3>Медклик Травматология</h3>
+                    
+                    <div class="contact-detail">
+                        <strong>Юридический адрес</strong>
+                        <div class="contact-detail-value">г. Новосибирск, ул. Новогодняя, 23/2</div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <strong>Телефон</strong>
+                        <div class="contact-detail-value"><a href="tel:+73832479017">+7 (383) 247-90-17</a></div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                       <strong>Email</strong>
+                        <div class="contact-detail-value"><a href="mailto:info@medclick.info">info@medclick.info</a></div>
+                    </div>
+                    
+                    <div class="schedule-table">
+                        <div class="schedule-row">
+                            <span class="schedule-day">Понедельник — Суббота</span>
+                            <span class="schedule-time">7:30 — 21:30</span>
+                        </div>
+                        <div class="schedule-row">
+                            <span class="schedule-day">Воскресенье</span>
+                            <span class="schedule-time">8:00 — 21:30</span>
+                        </div>
+                        <div class="schedule-row highlight">
+                            <span class="schedule-day">Травмпункт</span>
+                            <span class="schedule-time">Без очередей</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="VK">VK</a>
+                        <a href="#" class="social-link" title="Telegram">TG</a>
+                        <a href="#" class="social-link" title="WhatsApp">WA</a>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <div class="map-container">
+                        <a href="https://yandex.ru/maps/?um=constructor%3A65bad059f761292ec4cc712a1e1b4952c3581db4a8c5c275ece34c7cf7688886&amp;source=constructorStatic" target="_blank">
+                            <img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A65bad059f761292ec4cc712a1e1b4952c3581db4a8c5c275ece34c7cf7688886&amp;width=500&amp;height=400&amp;lang=ru_RU" 
+                                 alt="Расположение клиники Медклик на карте Яндекса" 
+                                 style="border: 0;">
+                        </a>
+                    </div>
+                    
+                    <div class="transport-info">
+                        <h4>Как добраться</h4>
+                        <div class="transport-item">
+                            <span>&#x1F687;</span>
+                            <span>Метро: станция «Студенческая» (7 минут пешком)</span>
+                        </div>
+                        <div class="transport-item">
+                            <span>&#x1F68C;</span>
+                            <span>Автобусы: маршруты № ...</span>
+                        </div>
+                        <div class="transport-item">
+                            <span>&#x1F17F;</span>
+                            <span>Парковка: бесплатная для пациентов</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
