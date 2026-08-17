@@ -32,8 +32,7 @@
             position: relative; 
         }
 
-
-                /* ===== Contacts Section + карты ===== */
+        /* ===== Contacts Section + карты ===== */
         .contacts-section {
             background: var(--bg-white);
         }
@@ -212,8 +211,23 @@
         
         /* ВАЖНО: Снизили прозрачность фона секций с 0.85 до 0.5, чтобы скелет просвечивал */
         section { padding: 80px 0; position: relative; z-index: 1; background: rgba(255, 255, 255, 0.5); }
-        .interactive-block { background: rgba(249, 249, 249, 0.5); }
+        /*.interactive-block { background: rgba(249, 249, 249, 0.5); } */
 
+        
+        /* Блок приемная с чем обращаетесь с фоновым изображением */
+        .interactive-block {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.519), rgba(255, 255, 255, 0.786)), url('img/priemnaya.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Эффект параллакса (можно убрать, если не нужен) */
+            padding: 50px; /* Отступы внутри блока, чтобы фон было видно вокруг вопросов */
+            margin-top: 40px;
+        }
+
+        /* Если у вас внутри .faq есть заголовок h3, убедимся, что он тоже имеет правильный отступ */
+        .faq h3 {
+            margin-bottom: 30px;
+        }
         .btn {
             display: inline-flex;
             align-items: center;
@@ -232,6 +246,33 @@
             text-align: center;
         }
 
+        .stars {
+            color: var(--accent-gold);
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .rating-value {
+            font-weight: 600;
+            color: var(--primary-navy);
+            font-size: 15px;
+        }
+
+        .rating-count {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .doctor-price-tag {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--bg-cream);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+        }
+
         .btn:hover { background-color: #0a5050; transform: translateY(-2px); }
 
         .btn-outline {
@@ -241,9 +282,9 @@
         }
         .btn-outline:hover { background-color: var(--primary); color: #fff; }
 
-        .section-subtitle { text-align: center; color: #666; max-width: 700px; margin: 0 auto 50px; }
+        .section-subtitle { text-align: center; color: #000000; max-width: 700px; margin: 0 auto 50px; }
 
-        /* --- СКАНИРУЮЩАЯ ЛИНИЯ (Layer 4 - поверх всего) --- */
+        /* --- СКАНИРУЮЩАЯ ЛИНИЯ (Layer 4 - поверх всего) 
         .scan-line {
             position: fixed;
             top: 0;
@@ -252,16 +293,17 @@
             height: 150px;
             background: linear-gradient(to bottom, transparent 0%, rgba(12, 102, 102, 0.05) 40%, rgba(12, 102, 102, 0.25) 50%, rgba(12, 102, 102, 0.05) 60%, transparent 100%);
             pointer-events: none;
-            z-index: 999; /* Поверх контента, но под модальными окнами */
+            z-index: 999; /* Поверх контента, но под модальными окнами 
             transform: translateY(-150px);
             animation: scanFullScreen 5s linear infinite;
-            display: none; /* Скрыта на мобильных */
-        }
+            display: none; 
+        } 
 
         @keyframes scanFullScreen {
             0% { transform: translateY(-150px); }
             100% { transform: translateY(100vh); }
         }
+        --- */
 
         /* --- HEADER --- */
         header {
@@ -470,8 +512,23 @@
         .hover-card:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(12, 102, 102, 0.1); }
 
         .hover-card h3 { color: var(--primary); display: flex; justify-content: space-between; align-items: center; }
-        .hover-card h3::after { content: '▼'; font-size: 0.8rem; transition: transform 0.3s ease; }
-        .hover-card:hover h3::after, .hover-card.active h3::after { transform: rotate(180deg); }
+
+        /* Заменяем текст на картинку */
+        .hover-card h3::after {
+            content: ''; /* Обязательно пустой контент */
+            display: block;
+            width: 16px; /* Ширина иконки (можете поменять под себя) */
+            height: 16px; /* Высота иконки */
+            background-image: url('img/arrows.png'); /* Путь к вашей картинке */
+            background-size: contain; /* Вписываем картинку без искажений */
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.3s ease; /* Анимация переворота сохраняется */
+        }
+
+        .hover-card:hover h3::after, .hover-card.active h3::after { 
+            transform: rotate(180deg); 
+        }
 
         .dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.4s ease; margin-top: 0; }
         .hover-card:hover .dropdown-content, .hover-card.active .dropdown-content { max-height: 500px; margin-top: 15px; }
@@ -584,6 +641,18 @@
         .doctor-card-back .btn:hover { background: #eee; }
 
         /* --- ДОКАЗАТЕЛЬСТВА --- */
+
+        /* Блок заголовка "Почему нам доверяют" */
+        .proof-title {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('img/medclick.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Параллакс */
+            padding: 60px 30px; /* Добавили отступы сверху/снизу и слева/справа, чтобы блок стал объемным */
+            border-radius: 15px; /* Закруглили углы, чтобы выглядело как отдельная карточка */
+            margin-bottom: 40px;
+        }
+
         .proof-block { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; align-items: center;}
         .advantages-list { list-style: none; }
         .advantages-list li { padding: 15px 0; border-bottom: 1px solid var(--grey); display: flex; align-items: center; gap: 15px; }
@@ -596,13 +665,14 @@
         .review-card .author { font-weight: 700; margin-top: 15px; font-size: 0.9rem; }
 
         /* --- FAQ --- */
+
         .faq-item { border: 1px solid var(--grey); border-radius: 8px; margin-bottom: 15px; overflow: hidden; background: rgba(255, 255, 255, 0.9); }
         .faq-question { background: transparent; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; }
         .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--primary); }
         .faq-item.active .faq-question::after { transform: rotate(45deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 20px; }
         .faq-item.active .faq-answer { max-height: 300px; padding: 0 20px 20px; }
-
+        
         /* --- ФОРМА И ПОДВАЛ --- */
         .contact-section { background: rgba(12, 102, 102, 0.85); color: #fff; border-radius: 20px; padding: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 60px; }
         .contact-section h2 { color: #fff; text-align: left; }
@@ -713,7 +783,7 @@
                 </ul>
             </nav>
             <div class="header-right">
-                <a href="tel:+73832051561" class="header-phone">+7 (383) 205 15 61</a>
+                <a href="tel:+74951234567" class="header-phone">+7 (495) 123-45-67</a>
                 <button class="btn" onclick="openModal('consultModal')">Консультация</button>
             </div>
             <button class="mobile-menu-btn">☰</button>
@@ -763,13 +833,13 @@
 
         <div class="hero-photos">
             <div class="photo-placeholder photo-main">
-                <img src="img/pozvonpoc.webp" alt="Главное фото клиники">
+                <img src="img/pozvonpoc.jpg" alt="Главное фото клиники">
             </div>
             <div class="photo-placeholder">
-                <img src="img/uzi3.webp" alt="Фото клиники 2">
+                <img src="3.jpg" alt="Фото клиники 2">
             </div>
             <div class="photo-placeholder">
-                <img src="img/2.webp" alt="Фото клиники 3">
+                <img src="2.jpg" alt="Фото клиники 3">
             </div>
         </div>
     </section>
@@ -778,7 +848,6 @@
     <section class="interactive-block" id="routes">
         <div class="container">
             <h2>С чем вы обращаетесь?</h2>
-            <p class="section-subtitle">Выберите ваш сценарий, чтобы увидеть возможные причины и методы лечения суставов и травм. Наведите курсор для подробностей.</p>
             
             <div class="routes-container">
                 <div class="hover-card">
@@ -1018,8 +1087,10 @@
     <!-- ДОВЕРИЕ И ОТЗЫВЫ -->
     <section id="proof">
         <div class="container">
-            <h2>Почему нам доверяют</h2>
-            <p class="section-subtitle">Мы используем доказательную медицину и современные технологии.</p>
+            <div class="proof-title">
+                <h2>Почему нам доверяют</h2>
+                <p class="section-subtitle"> используем доказательную медицину и современные технологии</p>
+            </div>
             <div class="proof-block">
                     <div class="hero-photos">
                     <div class="photo-placeholder photo-main">
@@ -1060,7 +1131,7 @@
             </div>
 
             <!-- FAQ -->
-            <div class="faq" id="faq">
+            <div class="faq">
                 <h3 style="text-align: center; margin-bottom: 30px;">Частые вопросы</h3>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">Можно ли вылечить артроз без операции?</div>
@@ -1107,7 +1178,7 @@
         </div>
     </section>
 
-        <section class="contacts-section" id="contacts">
+    <section class="contacts-section" id="contacts">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <h2 class="section-title display-text">Как нас найти</h2>
