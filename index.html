@@ -34,7 +34,7 @@
 
         /* ===== Contacts Section + карты ===== */
         .contacts-section {
-            background: var(--bg-white);
+            background: #ebebeb;
         }
 
         .contacts-grid {
@@ -56,10 +56,9 @@
         }
 
         .contact-info-card h3 {
-            font-family: var(--font-display);
             font-size: 28px;
             font-weight: 400;
-            color: var(--primary-navy);
+            color: #1BA4AB;
             margin-bottom: 32px;
             display: flex;
             align-items: center;
@@ -129,7 +128,7 @@
             width: 48px;
             height: 48px;
             background: var(--primary-navy);
-            color: white;
+            color: #1BA4AB;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -145,7 +144,7 @@
         }
 
         .map-container {
-            height: 480px;
+            height: 300px;
             background: var(--bg-cream);
             border-radius: var(--radius-lg);
             overflow: hidden;
@@ -207,7 +206,7 @@
         a { color: var(--primary); text-decoration: none; transition: color 0.3s ease; }
         a:hover { color: #0a5050; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
         
         /* ВАЖНО: Снизили прозрачность фона секций с 0.85 до 0.5, чтобы скелет просвечивал */
         section { padding: 80px 0; position: relative; z-index: 1; background: rgba(255, 255, 255, 0.5); }
@@ -216,12 +215,119 @@
         
         /* Блок приемная с чем обращаетесь с фоновым изображением */
         .interactive-block {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Эффект параллакса (можно убрать, если не нужен) */
+            padding: 50px; /* Отступы внутри блока, чтобы фон было видно вокруг вопросов */
+            margin-top: 40px;
+        }
+
+                /* Блок приемная с чем обращаетесь с фоновым изображением */
+        .interactive-block-routes {
             background-image: linear-gradient(rgba(255, 255, 255, 0.519), rgba(255, 255, 255, 0.786)), url('img/priemnaya.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Эффект параллакса (можно убрать, если не нужен) */
             padding: 50px; /* Отступы внутри блока, чтобы фон было видно вокруг вопросов */
             margin-top: 40px;
+        }
+
+                /* --- СТИЛИ БЛОКА ПРЕИМУЩЕСТВ (на основе дизайн-токенов) --- */
+        .home-advantages {
+            padding: var(--ui-space-inset-6xl) 0; /* 48px сверху и снизу */
+            background: rgba(255, 255, 255, 0.85); /* Легкая прозрачность, чтобы просвечивал фон костей */
+        }
+
+        .home-advantages-main-title {
+            text-align: center;
+            font-family: "Onest", sans-serif;
+            font-size: var(--ui-font-size-5xl); /* 28px */
+            font-weight: var(--ui-font-weight-bold); /* 700 */
+            color: var(--primary); /* Фирменный цвет */
+            line-height: 120%;
+            margin-bottom: var(--ui-space-stack-6xl); /* 48px отступ до сетки */
+        }
+
+        .home-advantages-grid {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--ui-space-inline-3xl); /* 32px между карточками */
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--ui-space-stack-6xl) 0; /* 48px отступ до кнопки */
+        }
+
+        .home-advantages-item {
+            flex: 1 1 280px; /* Карточки будут растягиваться, минимальная ширина 280px */
+            max-width: 350px;
+            background: var(--ui-color-background-primary); /* #fff */
+            border: var(--ui-border-width-thin) solid var(--ui-color-base-15); /* 1px solid #e6e7e9 */
+            border-radius: var(--ui-border-radius-2xl); /* 16px */
+            padding: var(--ui-space-inset-3xl) var(--ui-space-inset-2xl); /* 32px 28px */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--ui-shadow-bottom-s); /* 0 2px 4px 0 rgba(0,0,0,0.08) */
+            box-sizing: border-box;
+        }
+
+        .home-advantages-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--ui-shadow-bottom-2xl); /* 0 8px 10px 0 rgba(0,0,0,0.1) */
+            border-color: var(--primary);
+        }
+
+        .home-advantages-icon {
+            width: var(--ui-size-7xl); /* 64px */
+            height: var(--ui-size-7xl);
+            background: rgba(12, 102, 102, 0.1); /* Фирменный цвет с 10% прозрачностью */
+            border-radius: var(--ui-border-radius-circle); /* 50% */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--ui-space-stack-2xl); /* 28px */
+            color: var(--primary);
+        }
+
+        .home-advantages-icon svg {
+            width: var(--ui-size-3xl); /* 32px */
+            height: var(--ui-size-3xl);
+            fill: currentColor;
+        }
+
+        .home-advantages-item h3 {
+            font-family: "Onest", sans-serif;
+            font-size: var(--ui-font-size-xl); /* 16px */
+            font-weight: var(--ui-font-weight-semi-bold); /* 600 */
+            color: var(--ui-color-text-primary); /* #333 */
+            margin-bottom: var(--ui-space-stack-md); /* 16px */
+            line-height: var(--ui-font-line-height-md); /* 1.4 */
+        }
+
+        .home-advantages-item p {
+            font-family: "Onest", sans-serif;
+            font-size: var(--ui-font-size-lg); /* 15px */
+            font-weight: var(--ui-font-weight-regular); /* 400 */
+            color: var(--ui-color-text-secondary); /* #525c69 */
+            line-height: var(--ui-font-line-height-lg); /* 1.5 */
+            margin: 0;
+        }
+
+        .home-advantages-btn {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .home-advantages-item {
+                max-width: 100%;
+                flex: 1 1 100%;
+            }
         }
 
         /* Если у вас внутри .faq есть заголовок h3, убедимся, что он тоже имеет правильный отступ */
@@ -245,6 +351,44 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
             text-align: center;
         }
+
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #ffffff;
+            color: var(--primary);
+            padding: 14px 28px;
+            border: line-width 4px;
+            border-color: #0C6666;
+            border-radius: 8px;
+            font-family: 'Onest', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+        }
+
+        .btn-green {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #A5C130;
+            border: none;
+            color: #FFFFFF;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Onest', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+        }
+
 
         .stars {
             color: var(--accent-gold);
@@ -309,11 +453,12 @@
         header {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.95); /* Полупрозрачный хедер */
+            background: rgba(237, 233, 233, 0.95); /* Полупрозрачный хедер */
             backdrop-filter: blur(5px);
             border-bottom: 1px solid var(--grey);
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            max-width: 2400px
         }
 
         .header-inner {
@@ -339,7 +484,7 @@
         .header__logo-text {
         font-size: 13px;
         font-weight: 700;
-        color: var(--primary);
+        color: #0C6666;
         line-height: 1.3;
         max-width: 180px;
         }
@@ -363,14 +508,14 @@
         .header-phone {
             font-weight: 700;
             font-size: 1.2rem;
-            color: var(--text);
+            color: #0C6666;;
             white-space: nowrap;
         }
-        .header-phone:hover { color: var(--primary); }
+        .header-phone:hover { color: #eee; }
 
         nav ul { display: flex; list-style: none; gap: 25px; }
-        nav a { color: var(--text); font-weight: 500; font-size: 0.95rem; }
-        nav a:hover { color: var(--primary); }
+        nav a { color: #4b4b4b; font-weight: 500; font-size: 0.95rem; }
+        nav a:hover { color: #0C6666; }
         .mobile-menu-btn { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--primary);}
 
         /* --- HERO SECTION --- */
@@ -495,7 +640,7 @@
         /* --- ВЫПАДАЮЩИЕ БЛОКИ --- */
         .routes-container, .directions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -511,7 +656,32 @@
 
         .hover-card:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(12, 102, 102, 0.1); }
 
-        .hover-card h3 { color: var(--primary); display: flex; justify-content: space-between; align-items: center; }
+        /*.hover-card h3 { color: var(--primary); display: flex; justify-content: space-between; align-items: center; }
+
+        /* Растягиваем заголовок на всю ширину карточки (учитывая padding) и добавляем фон */
+        #routes .hover-card h3 {
+            margin: -25px -25px 20px -25px; /* Компенсируем padding карточки, чтобы фон ушел в края */
+            padding: 25px; /* Возвращаем отступ для текста */
+            border-radius: 12px 12px 0 0; /* Скругляем только верхние углы под форму карточки */
+            background-size: cover;
+            background-position: center;
+            box-sizing: border-box;
+        }
+
+        /* Картинка для первого маршрута */
+        .route-bg-1 {
+            /* url('путь_к_вашей_картинке'). linear-gradient накладывает полупрозрачный белый фон (0.8) для читаемости текста */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url('img/travma.webp');
+        }
+
+        /* Картинка для второго маршрута */
+        .route-bg-2 {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url('img/sustav.webp');
+        }
+
+        .route-bg-3 {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url('img/cta.jpg');
+        }
 
         /* Заменяем текст на картинку */
         .hover-card h3::after {
@@ -553,104 +723,260 @@
         }
 
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 50px; }
-        .treatment-card { background: rgba(12, 102, 102, 0.85); color: #fff; padding: 25px; border-radius: 12px; transition: transform 0.3s; display: flex; flex-direction: column; }
         .treatment-card:hover { transform: scale(1.03); }
         .treatment-card h3 { color: #fff; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; } 
         .treatment-card p { color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 0;}
 
-        /* --- ВРАЧИ (3D ФЛИП) --- */
-        .doctors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 50px; perspective: 1000px; }
-
-        /* Увеличили высоту с 400px до 480px */
-        .doctor-card { background: transparent; height: 480px; perspective: 1000px; }
-
-        .doctor-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
-        .doctor-card:hover .doctor-card-inner, .doctor-card.active .doctor-card-inner { transform: rotateY(180deg); }
-
-        .doctor-card-front, .doctor-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid var(--grey); }
-        .doctor-card-front { background: #fff; display: flex; flex-direction: column; }
-
-        .doctor-img-wrap { position: relative; height: 320px; width: 100%; background: var(--grey); } /* Увеличили высоту фото пропорционально */
-        .doctor-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-
-        .experience-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: var(--primary);
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .doctor-info { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-        .doctor-info h3 { font-size: 1.1rem; margin-bottom: 5px; color: var(--primary); }
-        .doctor-info span { font-size: 0.85rem; color: #666; }
-
-        /* --- Обратная сторона со скроллом --- */
-        .doctor-card-back { 
-            background: var(--primary); 
+        .treatment-card { 
+            background: rgba(12, 102, 102, 0.85); 
             color: #fff; 
-            transform: rotateY(180deg); 
-            padding: 25px 20px; 
+            padding: 25px; 
+            border-radius: 12px; 
+            transition: transform 0.3s; 
             display: flex; 
-            flex-direction: column; 
-            text-align: left; 
+            flex-direction: column;
+            position: relative; /* ВАЖНО: Добавляем, чтобы ярлык позиционировался относительно карточки */
+            overflow: hidden; /* Чтобы ярлык не вылезал за скругленные углы */
+        } 
+
+        /* Стили для ярлыка */
+        .treatment-card__badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ffffff; /* Белый фон ярлыка */
+            color: var(--primary); /* Фирменный цвет текста */
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom-left-radius: 12px; /* Скругляем только нижний левый угол */
+            border-top-right-radius: 12px; /* Скругляем верхний правый под карточку */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
         }
 
-        .doctor-card-back h3 { color: #fff; font-size: 1.2rem; margin-bottom: 15px; flex-shrink: 0; /* Чтобы заголовок не сжимался */ }
+/* --- ВРАЧИ (3D ФЛИП) --- */
+/* --- ВРАЧИ (БЕЗ ПОВОРОТА) --- */
+.doctors-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* 2 карточки в ряд на десктопе */
+    gap: 30px; 
+    margin-top: 50px; 
+}
 
-        /* Магия скролла здесь */
-        .main-doctors__card-paragraph { 
-            font-size: 0.9rem; 
-            line-height: 1.5; 
-            flex-grow: 1; /* Занимает всё доступное пространство между заголовком и кнопкой */
-            overflow-y: auto; /* Добавляет вертикальный скролл, если текст не влезает */
-            padding-right: 8px; /* Отступ, чтобы текст не налезал на скроллбар */
-            margin-bottom: 15px;
-        }
-        .main-doctors__card-paragraph strong { display: block; margin-top: 10px; }
+.doctor-card { 
+    background: transparent; 
+    height: 460px; /* Фиксированная высота */
+}
 
-        /* Стилизация скроллбара (опционально, но выглядит аккуратнее) */
-        .main-doctors__card-paragraph::-webkit-scrollbar {
-            width: 5px;
-        }
-        .main-doctors__card-paragraph::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.1); /* Цвет дорожки */
-            border-radius: 10px;
-        }
-        .main-doctors__card-paragraph::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.4); /* Цвет самого ползунка */
-            border-radius: 10px;
-        }
-        .main-doctors__card-paragraph::-webkit-scrollbar-thumb:hover {
-            background: rgba(255,255,255,0.6);
-        }
+.doctor-card-inner { 
+    position: relative; 
+    width: 100%; 
+    height: 100%; 
+    text-align: center; 
+}
 
-        .doctor-card-back .btn { 
-            background: #fff; 
-            color: var(--primary); 
-            font-weight: 700; 
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            flex-shrink: 0; /* Кнопка всегда остается видимой внизу */
-        }
-        .doctor-card-back .btn:hover { background: #eee; }
+/* Полностью убираем эффект поворота при наведении */
+.doctor-card:hover .doctor-card-inner, .doctor-card.active .doctor-card-inner { 
+    transform: none; 
+}
+
+.doctor-card-front { 
+    position: relative; /* Изменено с absolute, чтобы карточка занимала место в потоке */
+    width: 100%; 
+    height: 100%; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    border: 1px solid var(--grey); 
+    background: #fff; 
+    display: flex; 
+    flex-direction: row; 
+    text-align: left;
+}
+
+/* Скрываем обратную сторону полностью */
+.doctor-card-back { 
+    display: none; 
+} 
+
+/* Горизонтальная структура лицевой стороны */
+.doctor-img-wrap { 
+    position: relative; 
+    width: 220px; 
+    height: 100%; 
+    flex-shrink: 0; 
+    background: var(--grey); 
+} 
+
+.doctor-img-wrap img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+} 
+
+.experience-badge { 
+    position: absolute; 
+    bottom: 10px; 
+    left: 10px; 
+    background: #A5C130; 
+    color: #fff; 
+    padding: 4px 10px; 
+    border-radius: 20px; 
+    font-size: 0.8rem; 
+    font-weight: 600; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+} 
+
+.doctor-info { 
+    padding: 25px; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+} 
+
+.doctor-info h3 { 
+    font-size: 1.2rem; 
+    margin-bottom: 5px; 
+    color: var(--primary); 
+} 
+
+.doctor-position { 
+    font-size: 0.9rem; 
+    color: #666; 
+    display: block; 
+    margin-bottom: 15px; 
+} 
+
+.doctor-rating { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    margin-bottom: 15px; 
+    flex-wrap: wrap; 
+} 
+
+.doctor-rating .stars { color: #f5a623; font-size: 1rem; } 
+.doctor-rating .rating-value { font-weight: 700; font-size: 0.95rem; color: var(--text); } 
+.doctor-rating .rating-count { font-size: 0.65rem; color: #999; } 
+.doctor-rating .rating-reviews { font-size: 0.85rem; color: var(--primary); font-weight: 500; margin-left: auto; } 
+
+.doctor-specs { margin-bottom: 15px; } 
+.doctor-specs .specs-title { font-weight: 600; font-size: 0.9rem; color: var(--text); margin-bottom: 5px; } 
+.doctor-specs ul { list-style: none; padding: 0; margin: 0; } 
+.doctor-specs ul li { font-size: 0.85rem; color: #666; position: relative; padding-left: 12px; margin-bottom: 3px; } 
+.doctor-specs ul li::before { content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; } 
+
+.doctor-price-tag { 
+    display: flex; 
+    flex-direction: column; 
+    margin-bottom: 20px; 
+} 
+.doctor-price-tag .price-label { font-size: 0.8rem; color: #999; } 
+.doctor-price-tag .price-amount { font-size: 1.4rem; font-weight: 700; color: var(--text); } 
+
+.doctor-actions { 
+    display: flex; 
+    flex-direction: row; 
+    gap: 10px; 
+    margin-top: auto; 
+} 
+.doctor-actions .btn { 
+    flex: 1; 
+    height: 48px; /* Фиксированная высота (как у стандартной кнопки) */
+    padding: 0 10px; /* Убираем вертикальный паддинг, чтобы он не увеличивал высоту */
+    font-size: 0.9rem; 
+    white-space: nowrap; /* Запрещаем перенос текста на новую строку */
+    box-sizing: border-box; /* Чтобы padding не влиял на заданную height */
+}
+.btn-outline-light { 
+    background: transparent; 
+    border: 1px solid var(--primary); 
+    color: var(--primary); 
+} 
+.btn-outline-light:hover { background: rgba(12, 102, 102, 0.1); } 
+
+/* --- Адаптация под мобильные --- */
+@media (max-width: 768px) {
+    .doctors-grid {
+        grid-template-columns: 1fr; 
+    }
+    .doctor-card-front {
+        flex-direction: column; 
+    }
+    .doctor-img-wrap {
+        width: 100%;
+        height: 280px;
+    }
+}
+
 
         /* --- ДОКАЗАТЕЛЬСТВА --- */
 
         /* Блок заголовка "Почему нам доверяют" */
         .proof-title {
+            /* Оставляем фоновое изображение, если оно нужно */
             background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('img/medclick.webp');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Параллакс */
-            padding: 60px 30px; /* Добавили отступы сверху/снизу и слева/справа, чтобы блок стал объемным */
-            border-radius: 15px; /* Закруглили углы, чтобы выглядело как отдельная карточка */
-            margin-bottom: 40px;
+            background-attachment: fixed; 
+            
+            padding: 60px 40px; 
+            border-radius: 15px; 
+            margin-bottom: 20px;
+            
+            /* Добавляем Flexbox для расположения текста и картинки рядом */
+            display: flex;
+            flex-direction: row; /* На десктопе текст и картинка идут в ряд */
+            align-items: center; /* Выравнивание по вертикали по центру */
+            justify-content: space-between; /* Раздвигаем текст влево, картинку вправо */
+            gap: 40px; /* Расстояние между текстом и картинкой */
+        }
+
+        /* Стили для текстового блока */
+        .proof-title__text {
+            flex: 1; /* Текст занимает всё оставшееся место */
+        }
+
+        .proof-title__text h2 {
+            margin-bottom: 15px;
+            text-align: left; /* Заголовок по левому краю */
+        }
+
+        .proof-title__text .section-subtitle {
+            text-align: left; /* Подзаголовок по левому краю */
+            margin: 0;
+            max-width: 100%;
+        }
+
+        /* Стили для блока с картинкой */
+        .proof-title__image {
+            flex-shrink: 0; /* Запрещаем картинке сжиматься */
+            max-width: 300px; /* Максимальная ширина картинки (можете изменить под ваш SVG) */
+        }
+
+        .proof-title__image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Адаптация под мобильные --- */
+        @media (max-width: 768px) {
+            .proof-title {
+                flex-direction: column; /* На мобилке ставим друг под другом */
+                text-align: center;
+                padding: 40px 20px;
+            }
+            .proof-title__text h2,
+            .proof-title__text .section-subtitle {
+                text-align: center; /* На мобилке текст выравниваем по центру */
+            }
+            .proof-title__image {
+                margin-top: 20px; /* Отступ сверху перед картинкой */
+                max-width: 200px; /* На мобилке картинку можно сделать поменьше */
+            }
         }
 
         .proof-block { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; align-items: center;}
@@ -687,8 +1013,8 @@
         footer { background: rgba(12, 102, 102, 0.9); color: rgba(255,255,255,0.9); padding: 60px 0 20px; font-size: 0.9rem; position: relative; z-index: 1; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px; }
         .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul { color: #fff; list-style: none; }
+        .footer-col ul li { color: #fff; margin-bottom: 10px; }
         .footer-col a { color: rgba(255,255,255,0.8); }
         .footer-col a:hover { color: #fff; }
         
@@ -748,7 +1074,7 @@
             .contact-section { padding: 30px; }
             .header-buttons .btn-outline { display: none; }
             /* На мобильных фон делаем менее прозрачным для читаемости */
-            section { background: rgba(255, 255, 255, 0.95); }
+            section { background: rgba(255, 255, 255, 0.95); } 
         }
     </style>
 </head>
@@ -771,7 +1097,7 @@
         <div class="container header-inner">
             <a href="#hero" class="header__logo-link">
                 <img src="logo.svg" alt="МедКлик Травмпункт — Логотип" class="header__logo-img">
-                <span class="header__logo-text">Центр современной<br>травматологии</span>
+                <span class="header__logo-text">Центр современной<br>травматологии<br>и восстановления суставов</span>
             </a>
             <nav>
                 <ul>
@@ -783,8 +1109,8 @@
                 </ul>
             </nav>
             <div class="header-right">
-                <a href="tel:+74951234567" class="header-phone">+7 (495) 123-45-67</a>
-                <button class="btn" onclick="openModal('consultModal')">Консультация</button>
+                <a href="tel:+73832479017" class="header-phone">+7 (383) 247-90-17</a>
+                <button class="btn-green" onclick="openModal('consultModal')">Консультация</button>
             </div>
             <button class="mobile-menu-btn">☰</button>
         </div>
@@ -795,23 +1121,25 @@
         <div class="container hero-grid">
             <div class="hero-content">
                 <h1>
-                    Центр современной травматологии и восстановления суставов
+                    Травматолог-ортопед + диагностика в одной клинике
                 </h1>
-                <p class="hero-subtitle">Помогаем вернуть движение и уменьшить боль — без операции.</p>
+                <p class="hero-subtitle"> УЗИ, рентген и лечение — без лишних поездок <br> по разным клиникам</p>
 
                 <div class="hero-features">
                     <div class="hero-feature">
                         <div class="hero-feature-icon">01</div>
                         <div class="hero-feature-text">
-                            <h3>Получили травму</h3>
-                            <p>Помощь при переломах, вывихах, ушибах. Быстрая диагностика и лечение без лишних ожиданий.</p>
+                            <h3>Получили травму?</h3>
+                            <p> Переломы, вывихи, ушибы, растяжения, спортивные травмы<br>
+                                → Разберёмся в причине боли и подберём лечение</p>
                         </div>
                     </div>
                     <div class="hero-feature">
                         <div class="hero-feature-icon">02</div>
                         <div class="hero-feature-text">
-                            <h3>Болит сустав</h3>
-                            <p>Артроз, артрит, хруст, скованность. Современные безоперационные методы лечения суставов.</p>
+                            <h3>Болит сустав?</h3>
+                            <p> Колено, плечо, тазобедренный, голеностоп, стопа <br> 
+                                → Разберёмся в причине боли и подберём лечение</p>
                         </div>
                     </div>
                     <div class="hero-feature clickable" onclick="openModal('quizModal')">
@@ -824,11 +1152,16 @@
                 </div>
 
                 <div class="hero-buttons">
-                    <button class="btn" onclick="openModal('consultModal')">Получить план лечения</button>
+                    <button class="btn" onclick="openModal('consultModal')">Записаться к травматологу</button>
+                    <button class="btn-white" onclick="openModal('consultModal')">Получить план лечения</button>
                     <button class="btn-video" onclick="openModal('videoModal')" aria-label="Смотреть видео">
                         <span class="play-icon"></span>
                     </button>
                 </div>
+                
+                <br>
+                <p class="hero-subtitle"> Принимаем без направления • Новогодняя, 23/2 • Ежедневно</p>
+
             </div>
 
         <div class="hero-photos">
@@ -842,60 +1175,297 @@
                 <img src="2.jpg" alt="Фото клиники 3">
             </div>
         </div>
+        
     </section>
 
-    <!-- ЧЕМ ОБРАЩАЕТЕСЬ (МАРШРУТЫ) -->
-    <section class="interactive-block" id="routes">
-        <div class="container">
-            <h2>С чем вы обращаетесь?</h2>
+<style>
+    /* --- Блок "Травматология, где есть всё..." --- */
+    .why-us {
+        padding: 80px 0;
+        background: rgba(255, 255, 255, 0.85); /* Прозрачность, чтобы просвечивал фон */
+    }
+
+    .why-us__title {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #0c6666;
+        line-height: 1.3;
+        margin-bottom: 50px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .why-us__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        list-style: none;
+        padding: 0;
+        margin-bottom: 50px;
+    }
+
+    .why-us__item {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 35px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Выравнивание всех элементов по левому краю */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        text-align: left; /* Текст по левому краю */
+    }
+
+    .why-us__item_green {
+        background: #A5C130;
+        border-radius: 16px;
+        padding: 35px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Выравнивание всех элементов по левому краю */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        text-align: left;
+    }
+
+    .why-us__item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(12, 102, 102, 0.15);
+    }
+
+    .why-us__item_green:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(12, 102, 102, 0.15);
+    }
+
+    /* Контейнер для текста (находится сверху) */
+    .why-us__item-text {
+        margin-bottom: 20px;
+    }
+
+    .why-us__item-text-white {
+        margin-bottom: 20px;
+        color: #FFFFFF;
+    }
+
+
+    .why-us__item h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #0C6666;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+
+    .why-us__item p {
+        font-size: 1rem;
+        color: #666666;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Контейнер для иконки (магия прижатия вниз) */
+    .why-us__icon-wrap {
+        margin-top: auto; /* Автоматически занимает всё свободное место сверху, прижимая себя к низу */
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Иконка слева */
+    }
+    
+    .why-us__icon-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .why-us__icon-wrap svg {
+        width: 100%;
+        height: 100%;
+        fill: #0c6666;
+    }
+
+    .why-us__btn-wrap {
+        text-align: center;
+    }
+
+    /* --- Адаптация --- */
+    @media (max-width: 992px) {
+        .why-us__grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .why-us__title {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .why-us {
+            padding: 50px 0;
+        }
+        .why-us__grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .why-us__title {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+        }
+        .why-us__item {
+            padding: 25px 20px;
+        }
+    }
+</style>
+
+<section class="why-us" id="why-us">
+    <div class="container">
+        <h2 class="why-us__title">Травматология, где есть всё необходимое для лечения</h2>
+        
+        <ul class="why-us__grid">
             
-            <div class="routes-container">
-                <div class="hover-card">
-                    <h3>Маршрут 1: Травма</h3>
-                    <div class="dropdown-content">
-                        <ul>
-                            <li>Переломы</li><li>Вывихи и подвывихи</li><li>Ушибы</li>
-                            <li>Растяжения</li><li>Повреждения связок</li><li>Повреждения менисков</li>
-                            <li>Спортивные травмы</li><li>Последствия старых травм</li>
-                        </ul>
-                        <span class="methods">Как помогаем: Консультация, УЗИ, Рентген, Кинезиотейпирование, наложение гипса.</span>
-                        <br>
-                        <div class="hero-buttons">
-                            <button class="btn" onclick="openModal('consultModal')">Записаться на прием</button>
-                        </div>
-                    </div>
+            <!-- Карточка 1 -->
+            <li class="why-us__item_green">
+                <div class="why-us__item-text-white">
+                    <h3>Опытные травматологи-ортопеды</h3>
+                    <p>Врачи с подтверждённой квалификацией и практическим опытом</p>
                 </div>
-                <div class="hover-card">
-                    <h3>Маршрут 2: Суставы</h3>
-                    <div class="dropdown-content">
-                        <ul>
-                            <li>Артроз</li><li>Артрит</li><li>Боль неясного генеза</li>
-                            <li>Воспаление</li><li>Бурсит</li><li>Хруст в суставах</li><li>Скованность движений</li>
-                        </ul>
-                        <span class="methods">Как помогаем: PRP-терапия, внутрисуставные введения, тейпирование, индивидуальные стельки.</span>
-                        <br>
-                        <div class="hero-buttons">
-                            <button class="btn" onclick="openModal('consultModal')">Записаться на прием</button>
-                        </div>
-                    </div>
+                <div class="why-us__icon-wrap">
+                    <img src="img/medclichok.svg" alt="Опытные врачи">
                 </div>
-            </div>
-        </div>
-    </section>
+            </li>
 
-        <!-- ЛЕЧЕНИЕ -->
-    <section id="treatment">
-        <div class="container">
-            <h2>Методы лечения</h2>
-            <p class="section-subtitle">Современные безоперационные методики лечения суставов и травм.</p>
-            <div class="grid-4">
-                <div class="treatment-card"><h3>PRP-терапия</h3><p>Инъекции обогащённой тромбоцитами плазмы собственной крови пациента стимулируют регенерацию хрящевой ткани, уменьшают воспаление и боль. Эффективно при артрозе, тендинитах и спортивных травмах</p></div>
-                <div class="treatment-card"><h3>Внутрисуставное введение протезов синовиальной жидкости</h3><p>Замена повреждённой суставной жидкости медицинским препаратом на основе гиалуроновой кислоты. Восстанавливает амортизацию сустава, уменьшает трение и боль при движении. Рекомендовано при артрозах</p></div>
-                <div class="treatment-card"><h3>Кинезиотейпирование</h3><p>Наложение специальных эластичных тейпов для поддержки мышц и суставов без ограничения подвижности. Улучшает кровообращение, снимает отёк и боль. Применяется при травмах, в спорте и на этапе реабилитации после иммобилизации</p></div>
-                <div class="treatment-card"><h3>Стельки и блокады</h3><p>Изготовление стелек по индивидуальным замерам для коррекции биомеханики стопы. В сочетании с лечебными блокадами (при необходимости) обеспечивают снятие боли, уменьшение нагрузки на суставы и позвоночник</p></div>
+            <!-- Карточка 2 -->
+            <li class="why-us__item">
+                <div class="why-us__item-text">
+                    <h3>Диагностика на месте</h3>
+                    <p>УЗИ и рентген — не нужно ездить в другую клинику</p>
+                </div>
+                <div class="why-us__icon-wrap">
+                    <img src="img/time.png" alt="рентген">
+                </div>
+            </li>
+
+            <!-- Карточка 3 -->
+            <li class="why-us__item">
+                <div class="why-us__item-text">
+                    <h3>От обледований до лечения</h3>
+                    <p>Определяем причину боли и составляем индивидуальный план лечения</p>
+                </div>
+                <div class="why-us__icon-wrap">
+                    <img src="img/target.png" alt="полный цикл лечения">
+                </div>
+            </li>
+
+            <!-- Карточка 4 -->
+            <li class="why-us__item">
+                <div class="why-us__item-text">
+                    <h3>300+ отзывов пациентов</h3>
+                    <p>Реальные отзывы о врачах и клинике</p>
+                </div>
+                <div class="why-us__icon-wrap">
+                    <img src="img/heart.svg" alt="отзывы">
+                </div>
+            </li>
+            
+        </ul>
+
+        <div class="why-us__btn-wrap">
+            <button class="btn" onclick="openModal('consultModal')">Записаться на приём</button>
+        </div>
+    </div>
+</section>
+
+
+<!-- ЧЕМ ОБРАЩАЕТЕСЬ (МАРШРУТЫ) -->
+<section class="interactive-block-routes" id="routes">
+    <div class="container">
+        <h2>С чем вы обращаетесь?</h2>
+          
+        <div class="routes-container">
+            <div class="hover-card">
+                <!-- Добавлен класс route-bg-1 -->
+                <h3 class="route-bg-1">Маршрут 1: Травма</h3>
+                <div class="dropdown-content">
+                    <ul>
+                        <li>Переломы</li><li>Вывихи и подвывихи</li><li>Ушибы</li>
+                        <li>Растяжения</li><li>Повреждения связок</li><li>Повреждения менисков</li>
+                        <li>Спортивные травмы</li><li>Последствия старых травм</li>
+                    </ul>
+                    <span class="methods">Как помогаем: Консультация, УЗИ, Рентген, Кинезиотейпирование, наложение гипса.</span>
+                </div>
+            </div>
+            <div class="hover-card">
+                <!-- Добавлен класс route-bg-2 -->
+                <h3 class="route-bg-2">Маршрут 2: Суставы</h3>
+                <div class="dropdown-content">
+                    <ul>
+                        <li>Артроз</li><li>Артрит</li><li>Боль неясного генеза</li>
+                        <li>Воспаление</li><li>Бурсит</li><li>Хруст в суставах</li><li>Скованность движений</li>
+                    </ul>
+                    <span class="methods">Как помогаем: PRP-терапия, внутрисуставные введения, тейпирование, индивидуальные стельки.</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<!-- ЛЕЧЕНИЕ -->
+<section id="treatment">
+    <div class="container">
+        <h2>Современные методы лечения без операции</h2>
+        <p>Используем разные методы консервативного лечения. Врач подберёт оптимальный вариант в зависимости от причины боли, диагноза и состояния сустава</p>
+        <div class="grid-5">
+            
+            <div class="treatment-card">
+                <span class="treatment-card__badge">Собственная плазма — для восстановления тканей</span>
+                <h3>Плазмотерапия</h3>
+                <p>Инъекционное введение собственной плазмы пациента. Применяется в комплексной терапии заболеваний и повреждений опорно-двигательного аппарата.
+            Может использоваться при болях, воспалении и восстановлении после травм</p>
+            </div>
+            <br>
+            <div class="treatment-card">
+                <span class="treatment-card__badge">Концентрированные тромбоциты — точечно в зону проблемы</span>
+                <h3>PRP-терапия</h3>
+                <p>Метод с использованием плазмы пациента с повышенной концентрацией тромбоцитов. Применяется для стимуляции естественных восстановительных процессов тканей.
+            Используется при заболеваниях и повреждениях суставов, связок и сухожилий</p>
+            </div>
+            <br>
+            <div class="treatment-card">
+                <span class="treatment-card__badge">Для улучшения работы суставов</span>
+                <h3>Внутрисуставное введение протезов синовиальной жидкости</h3>
+                <p>Препарат вводится непосредственно в сустав. Метод может применяться при различных заболеваниях суставов для уменьшения боли и улучшения функции.
+                    <br>Препарат подбирается в зависимости от диагноза и состояния сустава.</p>
+            </div>
+            <br>
+            <div class="treatment-card">
+                <span class="treatment-card__badge">Корректируем нагрузку на стопы и суставы</span>
+                <h3>Индивидуальные ортопедические стельки</h3>
+                <p>Стельки изготавливаются с учётом индивидуальных особенностей стоп и распределения нагрузки.
+                Могут применяться при нарушениях опоры, болях в стопах и повышенной нагрузке на суставы.</p>
+            </div>
+            <br>
+            <div class="treatment-card">
+                <span class="treatment-card__badge">Когда нужно быстро уменьшить боль</span>
+                <h3>Блокады</h3>
+                <p> Введение лекарственного препарата в область источника боли. Может применяться при выраженном болевом синдроме и воспалении.
+                    <br>Состав и необходимость блокады определяет врач</p>
+            </div>
+            
+    <div class="container">
+          
+        <div class="routes-container">
+                <h3>Не знаете, какой метод вам подходит? Начните с консультации травматолога-ортопеда</h3>
+                    <div class="why-us__btn-wrap">
+                        <button class="btn" onclick="openModal('consultModal')">Записаться на приём</button>
+                    </div>
+        </div>
+    </div>
+
+    </section>  
 
     <!-- ДИАГНОСТИКА -->
     <section class="interactive-block" id="diagnostics">
@@ -922,6 +1492,178 @@
         </div>
     </section>
 
+<style>
+    /* --- БЛОК "КАК ПРОХОДИТ ПРИЁМ" (Полноширинные горизонтальные карточки) --- */
+    .appointment-steps {
+        padding: 80px 0;
+        background: rgba(255, 255, 255, 0.85); 
+    }
+
+    .steps-title {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #0c6666;
+        margin-bottom: 50px;
+    }
+
+    /* Жестко задаем 1 колонку на всю ширину */
+    .steps-grid {
+        display: grid;
+        grid-template-columns: 1fr; 
+        gap: 20px;
+        margin-bottom: 50px;
+        max-width: 100%;
+    }
+
+    .step-card {
+        width: 100%; /* На всю ширину экрана */
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #e3e3e3;
+        border-radius: 16px;
+        padding: 30px 40px 30px 150px; /* Большой отступ слева (150px) под гигантскую цифру */
+        overflow: hidden;
+        display: flex;
+        align-items: center; /* Выравнивание по вертикали по центру */
+        min-height: 140px; /* Фиксированная минимальная высота для прямоугольника */
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .step-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(12, 102, 102, 0.12);
+        border-color: #0c6666;
+    }
+
+    /* Гигантская полупрозрачная цифра слева */
+    .step-number {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%); /* Строго по центру по вертикали */
+        width: 130px; /* Ширина блока под цифру */
+        text-align: center; /* Цифра по центру своей зоны */
+        font-size: 140px; /* Огромный шрифт (на всю высоту карточки) */
+        font-weight: 900;
+        color: rgba(165, 193, 48, 0.4); /* Фирменный цвет с 10% прозрачности */
+        z-index: 0;
+        line-height: 1;
+        pointer-events: none;
+        font-family: 'Onest', sans-serif;
+    }
+
+    .step-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        text-align: left; /* Текст строго слева */
+    }
+
+    .step-content h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #0c6666;
+        margin-bottom: 8px;
+        text-align: left;
+    }
+
+    .step-content p {
+        font-size: 1.05rem;
+        color: #666666;
+        line-height: 1.5;
+        margin: 0;
+        text-align: left;
+    }
+
+    .steps-btn-wrap {
+        text-align: center;
+    }
+
+    /* --- Адаптация под мобильные --- */
+    @media (max-width: 768px) {
+        .steps-title {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+        }
+        .step-card {
+            padding: 25px 20px 25px 90px; /* Уменьшаем отступы и зону цифры */
+            min-height: auto;
+        }
+        .step-number {
+            width: 80px;
+            font-size: 80px; /* Уменьшаем цифру */
+        }
+        .step-content h3 {
+            font-size: 1.1rem;
+        }
+        .step-content p {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<section class="appointment-steps" id="process">
+    <div class="container">
+        <h2 class="steps-title">Как проходит приём</h2>
+        
+        <div class="steps-grid">
+            
+            <!-- Шаг 1 -->
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Осмотр</h3>
+                    <p>Врач выслушает жалобы и проведёт осмотр</p>
+                </div>
+            </div>
+
+            <!-- Шаг 2 -->
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Диагностика</h3>
+                    <p>При необходимости назначит УЗИ или рентген</p>
+                </div>
+            </div>
+
+            <!-- Шаг 3 -->
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Диагноз</h3>
+                    <p>Объяснит, что происходит и почему возникла боль</p>
+                </div>
+            </div>
+
+            <!-- Шаг 4 -->
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>План лечения</h3>
+                    <p>Расскажет, что можно сделать и сколько времени может занять восстановление</p>
+                </div>
+            </div>
+
+            <!-- Шаг 5 -->
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Наблюдение</h3>
+                    <p>При необходимости врач будет контролировать динамику лечения</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="steps-btn-wrap">
+            <button class="btn" onclick="openModal('consultModal')">Записаться на приём</button>
+        </div>
+    </div>
+</section>
+
+
     <!-- ВРАЧИ (4 КАРТОЧЕК + КНОПКА ЗАПИСАТЬСЯ) -->
     <section class="interactive-block" id="doctors">
         <div class="container">
@@ -929,72 +1671,108 @@
             <p class="section-subtitle">Врачи с многолетним опытом лечения спортивных травм и заболеваний суставов</p>
             <div class="doctors-grid">
                 
-                <!-- Врач 1 -->
                 <div class="doctor-card">
                     <div class="doctor-card-inner">
+                        <!-- Лицевая сторона -->
                         <div class="doctor-card-front">
                             <div class="doctor-img-wrap">
                                 <img src="img/gushin.webp" alt="Гущин Виктор Владимирович">
-                                <div class="experience-badge">Опыт 8 лет</div>
+                                <div class="experience-badge">8 лет практики</div>
                             </div>
                             <div class="doctor-info">
                                 <h3>Гущин Виктор Владимирович</h3>
-                                <span>Травматолог-ортопед</span>
-                          
-                            <div class="doctor-rating">
-                                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                                <span class="rating-value">4.8</span>
-                                <span class="rating-count">(ПроДокторов)</span>
-                            </div>
-                        
-                            <div class="doctor-price-tag">
-                                <span class="price-label">Первичный прием</span>
-                                <span class="price-amount">2 600 &#x20bd;</span>
+                                <span class="doctor-position">Травматолог-ортопед</span>
+                                
+                                <div class="doctor-rating">
+                                    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                    <span class="rating-value">4.8</span>
+                                    <span class="rating-count">(ПроДокторов)</span>
+                                    <span class="rating-reviews">124 отзыва</span>
+                                </div>
+
+                                <div class="doctor-specs">
+                                    <p class="specs-title">Специализация:</p>
+                                    <ul>
+                                        <li>травмы;</li>
+                                        <li>переломы и вывихи;</li>
+                                        <li>заболевания суставов;</li>
+                                        <li>восстановление после травм.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="doctor-price-tag">
+                                    <span class="price-label">Первичный прием</span>
+                                    <span class="price-amount">2 600 &#x20bd;</span>
+                                </div>
+
+                                <div class="doctor-actions">
+                                    <button class="btn" onclick="openModal('consultModal')">Записаться</button>
+                                    <button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button>
+                                </div>
                             </div>
                         </div>
-                          </div>
+                        
+                        <!-- Обратная сторона -->
                         <div class="doctor-card-back">
                             <h3>Гущин В.В.</h3>
                             <div class="main-doctors__card-paragraph">
                                 <strong>Опыт:</strong> 8 лет практики.
-                                <strong>Специализация:</strong> травмы, переломы и вывихи; лечение ран и укусов клеща; наблюдение в период восстановления после травм.
-                                <strong>С чем помогает:</strong> Проводит диагностику и лечение травм, переломов, вывихов и заболеваний опорно-двигательного аппарата
+                                <strong>Специализация:</strong> травмы, переломы и вывихи; заболевания суставов; восстановление после травм.
+                                <strong>С чем помогает:</strong> Проводит диагностику и лечение травм, переломов, вывихов и заболеваний опорно-двигательного аппарата.
                             </div>
                             <button class="btn" onclick="openModal('consultModal')">Записаться</button>
                         </div>
                     </div>
                 </div>
-
                 <!-- Врач 2 -->
                 <div class="doctor-card">
                     <div class="doctor-card-inner">
+                        <!-- Лицевая сторона -->
                         <div class="doctor-card-front">
                             <div class="doctor-img-wrap">
                                 <img src="img/salimov.webp" alt="Салимов Салим Шарифович">
-                                <div class="experience-badge">Опыт 7 лет</div>
+                                <div class="experience-badge">7 лет практики</div>
                             </div>
                             <div class="doctor-info">
                                 <h3>Салимов Салим Шарифович</h3>
-                                <span>Травматолог-ортопед</span>
+                                <span class="doctor-position">Травматолог-ортопед</span>
+                                
                                 <div class="doctor-rating">
                                     <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                                     <span class="rating-value">4.9</span>
                                     <span class="rating-count">(ПроДокторов)</span>
-                            </div>
-                        
+                                    <span class="rating-reviews">84 отзыва</span>
+                                </div>
+
+                                <div class="doctor-specs">
+                                    <p class="specs-title">Специализация:</p>
+                                    <ul>
+                                        <li>спортивные травмы;</li>
+                                        <li>заболевания суставов (артрозы);</li>
+                                        <li>патологии стопы (пяточная шпора);</li>
+                                        <li>ушибы, вывихи, растяжения.</li>
+                                    </ul>
+                                </div>
+
                                 <div class="doctor-price-tag">
                                     <span class="price-label">Первичный прием</span>
                                     <span class="price-amount">2 600 &#x20bd;</span>
                                 </div>
+
+                                <div class="doctor-actions">
+                                    <button class="btn" onclick="openModal('consultModal')">Записаться</button>
+                                    <button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button>
+                                </div>
                             </div>
                         </div>
+                        
+                        <!-- Обратная сторона (оставлена для сохранения структуры, скрыта через CSS) -->
                         <div class="doctor-card-back">
                             <h3>Салимов С.Ш.</h3>
                             <div class="main-doctors__card-paragraph">
                                 <strong>Опыт:</strong> 7 лет
-                                <strong>Специализация:</strong> тендиниты, бурситы, эпикондилиты, плантарный фасциит («пяточная шпора»), неврома Мортона, 
-                                артрозы и дегенеративно-дистрофические заболевания суставов, ушибы, вывихи, растяжения, гематомы и переломы, спортивные травмы
-                                <strong>Образование:</strong> Новосибирский государственный медицинский университет — лечебное дело, 2012–2018; Омский государственный медицинский университет — ординатура по травматологии и ортопедии, 2018–2020
+                                <strong>Специализация:</strong> тендиниты, бурситы, эпикондилиты, плантарный фасциит («пяточная шпора»), неврома Мортона, артрозы и дегенеративно-дистрофические заболевания суставов, ушибы, вывихи, растяжения, гематомы и переломы, спортивные травмы.
+                                <strong>Образование:</strong> Новосибирский государственный медицинский университет — лечебное дело, 2012–2018; Омский государственный медицинский университет — ординатура по травматологии и ортопедии, 2018–2020.
                             </div>
                             <button class="btn" onclick="openModal('consultModal')">Записаться</button>
                         </div>
@@ -1004,26 +1782,46 @@
                 <!-- Врач 3 -->
                 <div class="doctor-card">
                     <div class="doctor-card-inner">
+                        <!-- Лицевая сторона -->
                         <div class="doctor-card-front">
                             <div class="doctor-img-wrap">
                                 <img src="img/pochaev.webp" alt="Почаев Оятуллох Хабибович">
-                                <div class="experience-badge">Стаж 7 лет</div>
+                                <div class="experience-badge">7 лет практики</div>
                             </div>
                             <div class="doctor-info">
                                 <h3>Почаев Оятуллох Хабибович</h3>
-                                <span>Врач-травматолог-ортопед</span>
-                            <div class="doctor-rating">
-                                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                                <span class="rating-value">4.9</span>
-                                <span class="rating-count">(ПроДокторов)</span>
-                            </div>
-                        
-                            <div class="doctor-price-tag">
-                                <span class="price-label">Первичный прием</span>
-                                <span class="price-amount">2 600 &#x20bd;</span>
+                                <span class="doctor-position">Врач-травматолог-ортопед</span>
+                                
+                                <div class="doctor-rating">
+                                    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                    <span class="rating-value">4.9</span>
+                                    <span class="rating-count">(ПроДокторов)</span>
+                                    <span class="rating-reviews">64 отзыва</span>
+                                </div>
+
+                                <div class="doctor-specs">
+                                    <p class="specs-title">Специализация:</p>
+                                    <ul>
+                                        <li>травмы, вывихи, переломы;</li>
+                                        <li>лечение ран;</li>
+                                        <li>укусы клеща;</li>
+                                        <li>повреждения связок.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="doctor-price-tag">
+                                    <span class="price-label">Первичный прием</span>
+                                    <span class="price-amount">2 600 &#x20bd;</span>
+                                </div>
+
+                                <div class="doctor-actions">
+                                    <button class="btn" onclick="openModal('consultModal')">Записаться</button>
+                                    <button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button>
+                                </div>
                             </div>
                         </div>
-                          </div>
+                        
+                        <!-- Обратная сторона -->
                         <div class="doctor-card-back">
                             <h3>Почаев О.Х.</h3>
                             <div class="main-doctors__card-paragraph">
@@ -1039,34 +1837,51 @@
                 <!-- Врач 4 -->
                 <div class="doctor-card">
                     <div class="doctor-card-inner">
+                        <!-- Лицевая сторона -->
                         <div class="doctor-card-front">
                             <div class="doctor-img-wrap">
                                 <img src="img/han.webp" alt="Хан Владислав Сергеевич">
-                                <div class="experience-badge">Стаж 5 лет</div>
+                                <div class="experience-badge">5 лет практики</div>
                             </div>
                             <div class="doctor-info">
                                 <h3>Хан Владислав Сергеевич</h3>
-                                <span>Травматолог-ортопед</span>
-                            <div class="doctor-rating">
-                                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                                <span class="rating-value">4.8</span>
-                                <span class="rating-count">(ПроДокторов)</span>
-                            </div>
-                        
-                            <div class="doctor-price-tag">
-                                <span class="price-label">Первичный прием</span>
-                                <span class="price-amount">2 600 &#x20bd;</span>
+                                <span class="doctor-position">Травматолог-ортопед</span>
+                                
+                                <div class="doctor-rating">
+                                    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                    <span class="rating-value">4.8</span>
+                                    <span class="rating-count">(ПроДокторов)</span>
+                                    <span class="rating-reviews">45 отзывов</span>
+                                </div>
+
+                                <div class="doctor-specs">
+                                    <p class="specs-title">Специализация:</p>
+                                    <ul>
+                                        <li>боли в суставах и позвоночнике;</li>
+                                        <li>артрозы и дегенеративные заболевания;</li>
+                                        <li>спортивные травмы, растяжения;</li>
+                                        <li>ушибы, вывихи и переломы.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="doctor-price-tag">
+                                    <span class="price-label">Первичный прием</span>
+                                    <span class="price-amount">2 600 &#x20bd;</span>
+                                </div>
+
+                                <div class="doctor-actions">
+                                    <button class="btn" onclick="openModal('consultModal')">Записаться</button>
+                                    <button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button>
+                                </div>
                             </div>
                         </div>
-                          </div>
+                        
+                        <!-- Обратная сторона -->
                         <div class="doctor-card-back">
                             <h3>Хан В.С.</h3>
                             <div class="main-doctors__card-paragraph">
-                                
                                 <strong>Опыт:</strong> 18 лет
-                                <strong>Специализация:</strong> Боли в суставах и позвоночнике; Артрозы и другие дегенеративные заболевания суставов;
-                                Спортивные травмы; Растяжения связок и мышц; Ушибы, вывихи и переломы; Воспалительные заболевания сухожилий и связок; 
-                                Последствия травм и операций; Ограничение подвижности суставов
+                                <strong>Специализация:</strong> Боли в суставах и позвоночнике; Артрозы и другие дегенеративные заболевания суставов; Спортивные травмы; Растяжения связок и мышц; Ушибы, вывихи и переломы; Воспалительные заболевания сухожилий и связок; Последствия травм и операций; Ограничение подвижности суставов
                                 <strong>Образование:</strong> Кыргызско-Российский Славянский университет — специальность «Лечебное дело»; ФГБУ «ННИИТО им. Я.Л. Цивьяна» — ординатура по специальности «Травматология и ортопедия»
                             </div>
                             <button class="btn" onclick="openModal('consultModal')">Записаться</button>
@@ -1081,13 +1896,21 @@
     <section id="proof">
         <div class="container">
             <div class="proof-title">
-                <h2>Почему нам доверяют</h2>
-                <p class="section-subtitle"> используем доказательную медицину и современные технологии</p>
+                <!-- Обернули текст в отдельный блок -->
+                <div class="proof-title__text">
+                    <h2>Почему нам доверяют</h2>
+                    <p class="section-subtitle">Используем доказательную медицину и современные технологии</p>
+                </div>
+                
+                <!-- Блок с картинкой -->
+                <div class="proof-title__image">
+                    <img src="img/medclichok.svg" alt="Медклик">
+                </div>
             </div>
             <div class="proof-block">
                     <div class="hero-photos">
                     <div class="photo-placeholder photo-main">
-                        <img src="img/uzi3.webp" alt="Оборудование клиники">
+                        <img src="img/obor1.webp" alt="Оборудование клиники">
                     </div>
                     <div class="photo-placeholder">
                         <img src="img/centrif.webp" alt="Фото клиники 2">
@@ -1095,20 +1918,221 @@
                     <div class="photo-placeholder">
                         <img src="img/rentgen.webp" alt="Фото клиники 3">
                     </div>
+                    <div class="photo-placeholder">
+                        <img src="img/obor4.webp" alt="Фото клиники 3">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="img/obor2.webp" alt="Фото клиники 3">
+                    </div>
             </div>
                 <div>
                     <h3>Преимущества клиники</h3>
                     <ul class="advantages-list">
                         <li>Современное цифровое оборудование (УЗИ, Рентген)</li>
-                        <li>Опытные врачи высшей категории</li>
-                        <li>Лечение суставов без операции</li>
-                        <li>Индивидуальный подбор ортопедических стелек</li>
-                        <li>Комплексный подход: от диагностики до реабилитации</li>
+                        <li>1000+ отзывов пациентов</li>
+                        <li>Диагностика и лечение в одной клинике</li>
+                        <li>Травматологи-ортопеды с опытом > 5 лет</li>
+                        <li>Приём ежедневно</li>
                     </ul>
                     <button class="btn" onclick="openModal('consultModal')" style="margin-top: 20px;">Получить план лечения</button>
                 </div>
             </div>
 
+<style>
+    /* --- БЛОК СРОЧНОЙ ПОМОЩИ (ТРАВМПУНКТ) --- */
+    .emergency-care {
+        background: #A5C130;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        max-height: 450px;
+        border-radius: 50px;
+    }
+
+    .emergency-care__content {
+        flex: 1 1 50%; /* Текст занимает 60% ширины */
+        position: relative;
+        z-index: 2;
+        padding: 70px 5%; /* Отступы внутри текстового блока */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left; /* Выравнивание текста по левому краю */
+        box-sizing: border-box;
+    }
+
+    /* Декоративный фоновый узор (только для текстовой части) */
+    .emergency-care__content::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    .emergency-care__image {
+        flex: 1 1 30%; /* Картинка занимает 30% ширины */
+        position: relative;
+        min-height: 150px; /* Фиксированная минимальная высота, чтобы фото не схлопнулось */
+        overflow: hidden;
+    }
+
+    .emergency-care__image img {
+        width: 100%;
+        height: 100%;
+        /*object-fit: cover; /* Фото красиво заполняет блок без искажений */
+        position: absolute;
+        top: 0; left: 0;
+    }
+
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+        70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+
+    .emergency-care__content h2 {
+        color: #fff;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        font-weight: 700;
+        position: relative;
+        z-index: 2;
+    }
+
+    .emergency-care__subtitle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 30px;
+        font-weight: 500;
+        position: relative;
+        z-index: 2;
+    }
+
+    .emergency-care__tags {
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+        color: #fff;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 2;
+    }
+
+    .emergency-care__note {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 40px;
+        font-style: italic;
+        position: relative;
+        z-index: 2;
+    }
+
+    .emergency-care__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: #fff;
+        color: var(--primary);
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding: 18px 45px;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        align-self: flex-start; /* Кнопка не растягивается, стоит слева */
+        position: relative;
+        z-index: 2;
+    }
+
+    .emergency-care__btn svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+        animation: shake 1.5s infinite;
+    }
+
+    .emergency-care__btn:hover {
+        background: #f4f4f4;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: rotate(0deg); }
+        20% { transform: rotate(-15deg); }
+        40% { transform: rotate(15deg); }
+        60% { transform: rotate(-10deg); }
+        80% { transform: rotate(10deg); }
+    }
+
+    /* --- Адаптация под мобильные --- */
+    @media (max-width: 768px) {
+        .emergency-care {
+            flex-direction: column; /* На мобилке блоки становятся друг под другом */
+        }
+        .emergency-care__image {
+            min-height: 250px; /* Уменьшаем высоту фото на телефоне */
+            order: -1; /* Фото уходит наверх */
+        }
+        .emergency-care__content {
+            padding: 50px 20px;
+        }
+        .emergency-care__content h2 { font-size: 1.6rem; }
+        .emergency-care__subtitle { font-size: 1rem; }
+        .emergency-care__tags { font-size: 0.9rem; }
+        .emergency-care__btn {
+            width: 100%; /* На мобилке кнопка на всю ширину */
+            font-size: 1rem;
+            padding: 16px 20px;
+            align-self: stretch;
+        }
+    }
+</style>
+
+<!-- Блок вынесен из div.container, чтобы идти на всю ширину экрана -->
+<section class="emergency-care" id="emergency">
+    
+    <!-- Левая часть: Текст -->
+    <div class="emergency-care__content">
+        <h2>Получили травму сегодня?</h2>
+        <p style="text-align: left; color: #FFFFFF">Принимаем пациентов с острыми травмами:</p>
+        
+        <div class="emergency-care__tags">
+            • переломы <br>
+            • вывихи <br>
+            • ушибы <br>
+            • растяжения <br>
+            • раны
+        </div>
+        
+        <p class="emergency-care__note">Можно обратиться без направления</p>
+        
+        <a href="tel:+73832479017" class="emergency-care__btn">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Позвонить в травмпункт
+        </a>
+    </div>
+
+    <!-- Правая часть: Фото -->
+    <div class="emergency-care__image">
+        <!-- Замените src на путь к вашей фотографии (например, фото кабинета или врача) -->
+        <img src="img/left.svg" alt="Прием пациентов с острыми травмами">
+    </div>
+
+</section>
+
+<br>
+<br>
             <h3 style="margin-bottom: 30px; text-align: center;">Отзывы пациентов</h3>
             <div class="reviews-grid">
                 <div class="review-card">
@@ -1163,7 +2187,7 @@
                     <input type="tel" placeholder="Телефон" required>
                     <label class="consent-label">
                         <input type="checkbox" required>
-                        <span>Я согласен на обработку персональных данных и принимаю <a href="https://medclick.info/privacy-policy/" target="_blank">политику конфиденциальности</a>.</span>
+                        <span>Я согласен на обработку персональных данных и принимаю <a href="https://medclick.info/privacy-policy/" target="_blank">политику конфиденциальности</a></span>
                     </label>
                     <button type="submit" class="btn">Записаться</button>
                 </form>
@@ -1296,7 +2320,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 Центр современной травматологии. Все права защищены.</p>
+                <p>© 2026 Центр современной травматологии и восстановления суставов "Медклик". Все права защищены.</p>
                 <p><a href="https://medclick.info/privacy-policy/" target="_blank">Политика конфиденциальности</a></p>
             </div>
         </div>
@@ -1313,7 +2337,7 @@
                 <input type="tel" placeholder="Телефон" required>
                 <label class="consent-label" style="color: #666;">
                     <input type="checkbox" required>
-                    <span>Я согласен на обработку персональных данных и принимаю <a href="https://medclick.info/privacy-policy/" target="_blank">политику конфиденциальности</a>.</span>
+                    <span style="color: #030202;">Я согласен на обработку персональных данных и принимаю <a href="https://medclick.info/privacy-policy/" target="_blank" style="color: #060606; text-decoration: underline;">политику конфиденциальности</a></span>
                 </label>
                 <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
             </form>
@@ -1354,7 +2378,7 @@
                     <input type="tel" placeholder="Телефон" required>
                     <label class="consent-label" style="color: #666;">
                         <input type="checkbox" required>
-                        <span>Я согласен на обработку персональных данных и принимаю <a href="https://medclick.info/privacy-policy/" target="_blank">политику конфиденциальности</a>.</span>
+                        <span style="color: #030202;">Я согласен на обработку персональных данных и принимаю <a href="https://medclick.info/privacy-policy/" target="_blank" style="color: #060606; text-decoration: underline;">политику конфиденциальности</a></span>
                     </label>
                     <button type="submit" class="btn" style="width: 100%;">Получить план</button>
                 </form>
