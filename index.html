@@ -155,6 +155,138 @@
         .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
         .photo-main { grid-row: 1 / 3; }
 
+
+                /* --- Промо-блок со скидкой и таймером --- */
+        .hero-promo {
+            background: #fff;
+            border: 2px solid #0c6666;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(12, 102, 102, 0.1);
+        }
+
+        .hero-promo__main {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hero-promo__icon {
+            width: 50px;
+            height: 50px;
+            background: #0c6666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .hero-promo__icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        .hero-promo__text h3 {
+            font-size: 1.15rem;
+            color: #0c6666;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+        .hero-promo__text p {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .hero-promo__timer {
+            text-align: center;
+        }
+        .timer-label {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+        .timer-unit {
+            background: #0c6666;
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            min-width: 55px;
+            box-sizing: border-box;
+        }
+        .timer-unit span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .timer-unit small {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+        .timer-sep {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0c6666;
+        }
+
+        /* --- Адаптация промо-блока для мобильных --- */
+        @media (max-width: 480px) {
+            .hero-promo {
+                padding: 15px; /* Уменьшаем отступы внутри карточки */
+                gap: 15px;
+            }
+
+            .hero-promo__main {
+                gap: 10px; /* Уменьшаем расстояние между текстом и картинкой */
+            }
+
+            /* Уменьшаем картинку, чтобы тексту было больше места */
+            .hero-promo__img {
+                max-width: 60px; 
+            }
+
+            /* Подгоняем размер шрифтов */
+            .hero-promo__text h3 {
+                font-size: 1rem; /* Чуть мельче заголовок */
+            }
+            .hero-promo__text p {
+                font-size: 0.8rem;
+            }
+
+            /* Адаптация самого таймера */
+            .timer-unit {
+                min-width: 45px; /* Уменьшаем ширину табло */
+                padding: 6px 8px;
+            }
+            .timer-unit span {
+                font-size: 1.2rem; /* Уменьшаем цифры */
+            }
+            .timer-unit small {
+                font-size: 0.6rem; /* Уменьшаем подписи "часов", "минут" */
+            }
+            .timer-sep {
+                font-size: 1.2rem; /* Уменьшаем двоеточия */
+            }
+        }
+
         /* EMERGENCY */
         .emergency-care { padding: 0; background: var(--lime); overflow: hidden; display: flex; align-items: stretch; max-height: 450px; border-radius: 38px; }
         .emergency-care__content { flex: 1 1 55%; position: relative; z-index: 2; padding: 56px 5%; display: flex; flex-direction: column; justify-content: center; }
@@ -667,25 +799,43 @@
                     <p class="hero-subtitle">Травматолог-ортопед + диагностика в одной клинике:<br><strong>УЗИ, рентген, травмпункт</strong></p>
 
                     <div class="hero-features">
-                        <div class="hero-feature">
-                            <div class="hero-feature-icon">01</div>
-                            <div class="hero-feature-text">
-                                <h3>Помощь при травмах</h3>
-                                <p>Переломы, вывихи, ушибы, растяжения, спортивные травмы</p>
-                            </div>
-                        </div>
-                        <div class="hero-feature">
-                            <div class="hero-feature-icon">02</div>
-                            <div class="hero-feature-text">
-                                <h3>Лечение суставов</h3>
-                                <p>Установим причину болей и подберем лечение</p>
-                            </div>
-                        </div>
                         <div class="hero-feature clickable" onclick="openModal('quizModal')">
                             <div class="hero-feature-icon">?</div>
                             <div class="hero-feature-text">
                                 <h3>Подобрать специалиста</h3>
                                 <p>Ответьте на 3 простых вопроса — и мы подскажем нужного специалиста и метод лечения</p>
+                            </div>
+                        </div>
+                        <!-- НОВЫЙ БЛОК СО СКИДКОЙ И ТАЙМЕРОМ -->
+                        <div class="hero-promo">
+                            <div class="hero-promo__main">
+                                <div class="hero-promo__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+                                </div>
+                                <div class="hero-promo__text">
+                                    <h3>Скидка 600 ₽ на первичный приём</h3>
+                                    <p>Успейте воспользоваться!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-promo__timer">
+                                <p class="timer-label">До конца акции осталось:</p>
+                                <div class="timer-display">
+                                    <div class="timer-unit">
+                                        <span id="promo-hours">00</span>
+                                        <small>часов</small>
+                                    </div>
+                                    <span class="timer-sep">:</span>
+                                    <div class="timer-unit">
+                                        <span id="promo-minutes">00</span>
+                                        <small>минут</small>
+                                    </div>
+                                    <span class="timer-sep">:</span>
+                                    <div class="timer-unit">
+                                        <span id="promo-seconds">00</span>
+                                        <small>секунд</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -890,16 +1040,45 @@
                 <p class="section-subtitle">Врачи с многолетним опытом лечения спортивных травм и заболеваний суставов</p>
                 <div class="doctors-grid">
                     <div class="doctor-card">
-                        <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap"><img src="img/gushin.webp" alt="Гущин Виктор Владимирович" loading="lazy"><div class="experience-badge">8 лет практики</div></div><div class="doctor-info"><h3>Гущин Виктор Владимирович</h3><span class="doctor-position">Травматолог-ортопед</span><div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.8</span><span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">124 отзыва</span></div><div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>травмы;</li><li>переломы и вывихи;</li><li>заболевания суставов;</li><li>восстановление после травм.</li></ul></div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 600 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
+                        <div class="doctor-card-inner"><div class="doctor-card-front">
+                            <div class="doctor-img-wrap">
+                                <img src="img/gushin.webp" alt="Гущин Виктор Владимирович" loading="lazy"><div class="experience-badge">7 лет практики</div>
+                            </div><div class="doctor-info"><h3>Гущин Виктор Владимирович</h3><span class="doctor-position">Травматолог-ортопед</span>
+                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.8</span>
+                                    <span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">124 отзыва</span></div>
+                                    <div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>травмы;</li><li>переломы и вывихи;</li>
+                                        <li>заболевания суставов;</li><li>восстановление после травм.</li></ul></div>
+                                        <div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
                     </div>
                     <div class="doctor-card">
-                        <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap"><img src="img/salimov.webp" alt="Салимов Салим Шарифович" loading="lazy"><div class="experience-badge">7 лет практики</div></div><div class="doctor-info"><h3>Салимов Салим Шарифович</h3><span class="doctor-position">Травматолог-ортопед</span><div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.9</span><span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">84 отзыва</span></div><div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>спортивные травмы;</li><li>заболевания суставов (артрозы);</li><li>патологии стопы (пяточная шпора);</li><li>ушибы, вывихи, растяжения.</li></ul></div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 600 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
+                        <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap">
+                            <img src="img/salimov.webp" alt="Салимов Салим Шарифович" loading="lazy"><div class="experience-badge">7 лет практики</div></div>
+                            <div class="doctor-info"><h3>Салимов Салим Шарифович</h3><span class="doctor-position">Травматолог-ортопед</span>
+                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.9</span>
+                                    <span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">84 отзыва</span></div>
+                                    <div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>спортивные травмы;</li>
+                                        <li>заболевания суставов (артрозы);</li><li>патологии стопы (пяточная шпора);</li><li>ушибы, вывихи, растяжения.</li></ul>
+                                    </div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
                     </div>
                     <div class="doctor-card">
-                        <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap"><img src="img/pochaev.webp" alt="Почаев Оятуллох Хабибович" loading="lazy"><div class="experience-badge">7 лет практики</div></div><div class="doctor-info"><h3>Почаев Оятуллох Хабибович</h3><span class="doctor-position">Врач-травматолог-ортопед</span><div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.9</span><span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">64 отзыва</span></div><div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>травмы, вывихи, переломы;</li><li>лечение ран;</li><li>укусы клеща;</li><li>повреждения связок.</li></ul></div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 600 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
+                        <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap">
+                            <img src="img/pochaev.webp" alt="Почаев Оятуллох Хабибович" loading="lazy"><div class="experience-badge">7 лет практики</div></div>
+                            <div class="doctor-info"><h3>Почаев Оятуллох Хабибович</h3><span class="doctor-position">Врач-травматолог-ортопед</span>
+                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.9</span>
+                                    <span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">64 отзыва</span></div>
+                                    <div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>травмы, вывихи, переломы;</li><li>лечение ран;</li>
+                                        <li>укусы клеща;</li><li>повреждения связок.</li></ul></div>
+                                        <div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
                     </div>
                     <div class="doctor-card">
-                        <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap"><img src="img/han.webp" alt="Хан Владислав Сергеевич" loading="lazy"><div class="experience-badge">5 лет практики</div></div><div class="doctor-info"><h3>Хан Владислав Сергеевич</h3><span class="doctor-position">Травматолог-ортопед</span><div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.8</span><span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">45 отзывов</span></div><div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>боли в суставах и позвоночнике;</li><li>артрозы и дегенеративные заболевания;</li><li>спортивные травмы, растяжения;</li><li>ушибы, вывихи и переломы.</li></ul></div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 600 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
+                        <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap">
+                            <img src="img/han.webp" alt="Хан Владислав Сергеевич" loading="lazy"><div class="experience-badge">5 лет практики</div></div>
+                            <div class="doctor-info"><h3>Хан Владислав Сергеевич</h3><span class="doctor-position">Травматолог-ортопед</span>
+                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.8</span>
+                                    <span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">45 отзывов</span></div>
+                                    <div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>боли в суставах и позвоночнике;</li>
+                                        <li>артрозы и дегенеративные заболевания;</li><li>спортивные травмы, растяжения;</li><li>ушибы, вывихи и переломы.</li>
+                                    </ul></div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
                     </div>
                 </div>
             </div>
@@ -1016,9 +1195,28 @@
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('quizModal')" aria-label="Закрыть">✕</button>
             <div class="quiz-progress"><div class="quiz-progress-bar" id="quizBar"></div></div>
-            <div class="quiz-step active" id="step1"><h2>Что у вас болит?</h2><div class="quiz-options"><div class="quiz-option" onclick="selectQuizOption(this,'Колено')">Колено</div><div class="quiz-option" onclick="selectQuizOption(this,'Плечо')">Плечо</div><div class="quiz-option" onclick="selectQuizOption(this,'Стопа')">Стопа / Голеностоп</div><div class="quiz-option" onclick="selectQuizOption(this,'Спина')">Спина / Поясница</div></div><button class="btn" onclick="nextStep(2)">Далее</button></div>
-            <div class="quiz-step" id="step2"><h2>Как давно вас это беспокоит?</h2><div class="quiz-options"><div class="quiz-option" onclick="selectQuizOption(this,'Острая травма')">Только что травмировался</div><div class="quiz-option" onclick="selectQuizOption(this,'Несколько дней')">Несколько дней</div><div class="quiz-option" onclick="selectQuizOption(this,'Недели')">Несколько недель</div><div class="quiz-option" onclick="selectQuizOption(this,'Долго')">Месяцы / Хроническая боль</div></div><button class="btn btn-outline" onclick="nextStep(1)" style="margin-right:10px;">Назад</button><button class="btn" onclick="nextStep(3)">Далее</button></div>
-            <div class="quiz-step" id="step3"><h2>Оставьте телефон</h2><p>Мы подберем врача и подготовим план диагностики.</p><form onsubmit="submitQuiz(event)"><input type="text" placeholder="Ваше имя" required autocomplete="name"><input type="tel" placeholder="Телефон" required autocomplete="tel"><label class="consent-label" style="color:#666;"><input type="checkbox" required><span style="color:#030202;">Я согласен на обработку персональных данных и принимаю <a href="https://medclick.info/privacy-policy/" target="_blank" style="color:#060606;text-decoration:underline;">политику конфиденциальности</a></span></label><button type="submit" class="btn" style="width:100%;">Получить план</button></form></div>
+            <div class="quiz-step active" id="step1"><h2>Что вас беспокоит?</h2>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectQuizOption(this,'Боль или ограничение движения в суставах')">
+Боль или ограничение движения в суставах</div>
+<div class="quiz-option" onclick="selectQuizOption(this,'Боль в спине, шее или пояснице')">Боль в спине, шее или пояснице</div>
+<div class="quiz-option" onclick="selectQuizOption(this,'Последствия травмы, ушиба или растяжения')">Последствия травмы, ушиба или растяжения</div>
+<div class="quiz-option" onclick="selectQuizOption(this,'Хочу понять причину боли и с чего начать лечение')">Хочу понять причину боли и с чего начать лечение</div>
+</div><button class="btn" onclick="nextStep(2)">Далее</button></div>
+            <div class="quiz-step" id="step2"><h2>Как давно вас это беспокоит?</h2><div class="quiz-options">
+                <div class="quiz-option" onclick="selectQuizOption(this,'Острая травма')">Только что травмировался</div>
+                <div class="quiz-option" onclick="selectQuizOption(this,'Несколько дней')">Несколько дней</div>
+                <div class="quiz-option" onclick="selectQuizOption(this,'Недели')">1-4 недели</div>
+                <div class="quiz-option" onclick="selectQuizOption(this,'Долго')">Месяцы / Хроническая боль</div></div>
+                <button class="btn btn-outline" onclick="nextStep(1)" style="margin-right:10px;">Назад</button><button class="btn" onclick="nextStep(3)">Далее</button></div>
+            <div class="quiz-step" id="step3"><h2>Когда боль становится сильнее?</h2><div class="quiz-options">
+                <div class="quiz-option" onclick="selectQuizOption(this,'После долгого сидения или стояния')">После долгого сидения или стояния</div>
+                <div class="quiz-option" onclick="selectQuizOption(this,'При движении рукой, ногой или корпусом')">При движении рукой, ногой или корпусом</div>
+                <div class="quiz-option" onclick="selectQuizOption(this,'Болит даже в покое')">Болит даже в покое</div>
+                <div class="quiz-option" onclick="selectQuizOption(this,'Затрудняюсь ответить')">Затрудняюсь ответить</div></div>
+                <button class="btn btn-outline" onclick="nextStep(2)" style="margin-right:10px;">Назад</button><button class="btn" onclick="nextStep(4)">Далее</button></div>    
+            
+                <div class="quiz-step" id="step4"><h2>Оставьте телефон</h2><p>Мы подберем врача и подготовим план диагностики.</p><form onsubmit="submitQuiz(event)"><input type="text" placeholder="Ваше имя" required autocomplete="name"><input type="tel" placeholder="Телефон" required autocomplete="tel"><label class="consent-label" style="color:#666;"><input type="checkbox" required><span style="color:#030202;">Я согласен на обработку персональных данных и принимаю <a href="https://medclick.info/privacy-policy/" target="_blank" style="color:#060606;text-decoration:underline;">политику конфиденциальности</a></span></label><button type="submit" class="btn" style="width:100%;">Получить план</button></form></div>
         </div>
     </div>
 
@@ -1167,5 +1365,44 @@
             if (window.innerWidth > 768) closeMobileMenu();
         });
     </script>
+
+    <script>
+// --- ТАЙМЕР ОБРАТНОГО ОТСЧЕТА ДО КОНЦА ДНЯ ---
+function updatePromoTimer() {
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0); // Устанавливаем время на 00:00 следующего дня
+    
+    const diff = midnight - now; // Разница в миллисекундах
+    
+    // Если время вышло (на всякий случай)
+    if (diff <= 0) {
+        document.getElementById("promo-hours").innerText = "00";
+        document.getElementById("promo-minutes").innerText = "00";
+        document.getElementById("promo-seconds").innerText = "00";
+        return;
+    }
+    
+    // Вычисляем часы, минуты, секунды
+    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Добавляем ноль спереди, если число меньше 10
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+    // Обновляем значения на странице
+    document.getElementById("promo-hours").innerText = hours;
+    document.getElementById("promo-minutes").innerText = minutes;
+    document.getElementById("promo-seconds").innerText = seconds;
+}
+
+// Запускаем таймер сразу и затем каждую секунду
+updatePromoTimer();
+setInterval(updatePromoTimer, 1000);
+    </script>
+
 </body>
 </html>
