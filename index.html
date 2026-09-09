@@ -711,11 +711,6 @@
         .advantages-list { list-style:none; }
         .advantages-list li { padding:14px 0; border-bottom:1px solid var(--grey); display:flex; align-items:center; gap:12px; }
         .advantages-list li::before { content:'✓'; color:#fff; background:var(--primary); border-radius:50%; width:24px; height:24px; display:flex; align-items:center; justify-content:center; font-size:.8rem; flex-shrink:0; }
-        .reviews-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; margin-bottom:60px; }
-        .review-card { background:#f9f9f9; padding:25px; border-radius:12px; border-left:4px solid var(--primary); }
-        .review-card .stars { color:#f5a623; margin-bottom:10px; }
-        .review-card p { font-style:italic; font-size:.95rem; }
-        .review-card .author { font-weight:700; margin-top:15px; font-size:.9rem; }
         .faq { max-width:1000px; margin:0 auto; }
         .faq-item { border:1px solid var(--grey); border-radius:10px; margin-bottom:12px; overflow:hidden; background:#fff; }
         .faq-question { padding:18px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; font-weight:600; font-size:1.05rem; }
@@ -724,6 +719,132 @@
         .faq-answer { max-height:0; overflow:hidden; transition:max-height .3s ease,padding .3s ease; padding:0 20px; }
         .faq-item.active .faq-answer { max-height:500px; padding:0 20px 20px; }
 
+
+/* REVIEWS SLIDER */
+
+.reviews-slider {
+    position: relative;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.reviews-slider__viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+.reviews-slider__track {
+    display: flex;
+    width: 100%;
+    transition: transform .7s ease;
+    will-change: transform;
+}
+
+.reviews-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* CARD */
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    height: 100%;
+
+    background: #f9f9f9;
+
+    padding: 25px;
+
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+}
+
+.review-card .stars {
+    color: #f5a623;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.review-card p {
+    margin: 0;
+
+    flex-grow: 1;
+
+    font-style: italic;
+    font-size: .95rem;
+    line-height: 1.55;
+}
+
+.review-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-top: 18px;
+}
+
+.review-card .author {
+    margin: 0;
+
+    font-weight: 700;
+    font-size: .9rem;
+}
+
+.review-card__source {
+    display: block;
+
+    width: 90px;
+    max-width: 32%;
+    height: auto;
+
+    flex-shrink: 0;
+
+    opacity: .85;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    /*
+       На мобильном остаются 2 отзыва за один показ,
+       но располагаются вертикально, чтобы текст был читаемым.
+    */
+
+    .reviews-slide {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .review-card {
+        padding: 20px;
+    }
+
+    .review-card p {
+        font-size: .9rem;
+    }
+
+    .review-card__footer {
+        gap: 12px;
+    }
+
+    .review-card__source {
+        width: 75px;
+        max-width: 30%;
+    }
+
+}
         /* FORM */
         .contact-section { background:rgba(12,102,102,.92); color:#fff; border-radius:20px; padding:46px; display:grid; grid-template-columns:1fr 1fr; gap:46px; align-items:center; margin-bottom:0; }
         .contact-section h2 { color:#fff; text-align:left; margin-bottom:14px; }
@@ -1107,7 +1228,714 @@
             .price-list li { flex-direction:column; gap:2px; }
             .price-list li span:last-child { white-space:normal; }
         }
-    </style>
+
+    /* ========================================
+   TRAUMA PRICE
+======================================== */
+
+.trauma-price {
+    --price-green: #0C6666;
+    --price-lime: #A5C130;
+    --price-text: #303737;
+    --price-muted: #6F7575;
+    --price-border: #E5EAEA;
+    --price-bg: #F7FAFA;
+
+    padding: 90px 0 100px;
+    background: #fff;
+}
+
+
+/* HEADER */
+
+.trauma-price__header {
+    max-width: 780px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.trauma-price__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 15px;
+    padding: 8px 14px;
+
+    border-radius: 100px;
+
+    background: rgba(12,102,102,.08);
+    color: var(--price-green);
+
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.trauma-price__label::before {
+    content: '';
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--price-lime);
+}
+
+.trauma-price__title {
+    margin: 0 0 16px;
+
+    color: var(--price-green);
+
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -.035em;
+}
+
+.trauma-price__subtitle {
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    color: var(--price-muted);
+
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+
+/* GROUPS */
+
+.trauma-price__groups {
+    display: flex;
+    flex-direction: column;
+
+    gap: 28px;
+
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.trauma-price__group {
+    overflow: hidden;
+
+    background: #fff;
+
+    border: 1px solid var(--price-border);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 32px rgba(25,66,66,.05);
+}
+
+
+/* GROUP HEADER */
+
+.trauma-price__group-header {
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    padding: 24px 28px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(12,102,102,.06),
+            rgba(165,193,48,.04)
+        );
+
+    border-bottom: 1px solid var(--price-border);
+}
+
+.trauma-price__icon {
+    width: 50px;
+    height: 50px;
+
+    flex: 0 0 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: var(--price-green);
+    color: #fff;
+}
+
+.trauma-price__icon svg {
+    width: 27px;
+    height: 27px;
+
+    fill: none;
+    stroke: currentColor;
+
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.trauma-price__group-header h3 {
+    margin: 0 0 4px;
+
+    color: var(--price-green);
+
+    font-size: 21px;
+    line-height: 1.2;
+}
+
+.trauma-price__group-header p {
+    margin: 0;
+
+    color: var(--price-muted);
+
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+
+/* PRICE ROW */
+
+.trauma-price__list {
+    width: 100%;
+}
+
+.trauma-price__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 17px 28px;
+
+    border-bottom: 1px solid var(--price-border);
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.trauma-price__item:last-child {
+    border-bottom: 0;
+}
+
+.trauma-price__item:hover {
+    background: var(--price-bg);
+}
+
+.trauma-price__item--accent {
+    background: rgba(165,193,48,.07);
+}
+
+.trauma-price__name {
+    min-width: 0;
+
+    color: var(--price-text);
+
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.trauma-price__note {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--price-muted);
+
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.trauma-price__value {
+    min-width: 90px;
+
+    color: var(--price-green);
+
+    font-size: 17px;
+    font-weight: 700;
+
+    text-align: right;
+    white-space: nowrap;
+}
+
+
+/* CTA */
+
+.trauma-price__cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    max-width: 1050px;
+
+    margin: 32px auto 0;
+    padding: 30px 34px;
+
+    border-radius: 22px;
+
+    background: var(--price-green);
+}
+
+.trauma-price__cta-text {
+    min-width: 0;
+}
+
+.trauma-price__cta h3 {
+    margin: 0 0 7px;
+
+    color: #fff;
+
+    font-size: 22px;
+    line-height: 1.25;
+}
+
+.trauma-price__cta p {
+    max-width: 670px;
+
+    margin: 0;
+
+    color: rgba(255,255,255,.78);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.trauma-price__button {
+    flex-shrink: 0;
+
+    background: #fff;
+    color: var(--price-green);
+    border-color: #fff;
+}
+
+/* ========================================
+   PRICE EXPAND / COLLAPSE
+======================================== */
+
+/* По умолчанию показываем только первые 2 строки */
+.trauma-price__group:not(.is-open)
+.trauma-price__item:nth-child(n+3) {
+    display: none;
+}
+
+
+/* КНОПКА ПОЛНЫЙ ПРАЙС */
+
+.trauma-price__toggle {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 15px 20px;
+
+    background: #fff;
+    color: var(--price-green);
+
+    border: 0;
+    border-top: 1px solid var(--price-border);
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.trauma-price__toggle:hover {
+    background: var(--price-bg);
+}
+
+
+/* СТРЕЛКА */
+
+.trauma-price__toggle svg {
+    width: 18px;
+    height: 18px;
+
+    fill: none;
+    stroke: currentColor;
+
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition: transform .25s ease;
+}
+
+
+/* При раскрытом прайсе стрелка поворачивается */
+
+.trauma-price__group.is-open
+.trauma-price__toggle svg {
+    transform: rotate(180deg);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .trauma-price__toggle {
+        min-height: 48px;
+
+        padding: 14px 16px;
+
+        font-size: 13px;
+    }
+
+    .trauma-price__toggle svg {
+        width: 17px;
+        height: 17px;
+    }
+
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .trauma-price {
+        padding: 70px 0 75px;
+    }
+
+    .trauma-price__header {
+        margin-bottom: 40px;
+    }
+
+    .trauma-price__item {
+        padding: 16px 22px;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .trauma-price {
+        padding: 58px 0 64px;
+    }
+
+
+    /* HEADER */
+
+    .trauma-price__header {
+        margin-bottom: 32px;
+
+        text-align: left;
+    }
+
+    .trauma-price__label {
+        margin-bottom: 13px;
+
+        font-size: 11px;
+    }
+
+    .trauma-price__title {
+        margin-bottom: 14px;
+
+        font-size: 1.85rem;
+        line-height: 1.1;
+    }
+
+    .trauma-price__subtitle {
+        margin: 0;
+
+        font-size: .95rem;
+        line-height: 1.5;
+    }
+
+
+    /* GROUP */
+
+    .trauma-price__groups {
+        gap: 20px;
+    }
+
+    .trauma-price__group {
+        border-radius: 16px;
+    }
+
+    .trauma-price__group-header {
+        gap: 13px;
+
+        padding: 18px 16px;
+    }
+
+    .trauma-price__icon {
+        width: 44px;
+        height: 44px;
+
+        flex-basis: 44px;
+
+        border-radius: 12px;
+    }
+
+    .trauma-price__icon svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .trauma-price__group-header h3 {
+        font-size: 18px;
+    }
+
+    .trauma-price__group-header p {
+        font-size: 12px;
+    }
+
+
+    /* PRICE ROW */
+
+    .trauma-price__item {
+        grid-template-columns: minmax(0, 1fr) auto;
+
+        align-items: start;
+
+        gap: 12px;
+
+        padding: 15px 16px;
+    }
+
+    .trauma-price__name {
+        min-width: 0;
+
+        font-size: 13px;
+        line-height: 1.4;
+
+        overflow-wrap: break-word;
+    }
+
+    .trauma-price__note {
+        margin-top: 3px;
+
+        font-size: 11px;
+    }
+
+    .trauma-price__value {
+        min-width: auto;
+
+        font-size: 14px;
+        line-height: 1.4;
+
+        white-space: nowrap;
+    }
+
+
+    /* CTA */
+
+    .trauma-price__cta {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 18px;
+
+        margin-top: 24px;
+        padding: 22px;
+
+        border-radius: 18px;
+    }
+
+    .trauma-price__cta h3 {
+        font-size: 1.2rem;
+    }
+
+    .trauma-price__cta p {
+        font-size: .86rem;
+    }
+
+    .trauma-price__button {
+        width: 100%;
+    }
+
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+
+    .trauma-price__item {
+        grid-template-columns: 1fr;
+
+        gap: 7px;
+    }
+
+    .trauma-price__value {
+        text-align: left;
+    }
+
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(12, 102, 102, .08);
+    color: var(--primary);
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.social-link svg {
+    width: 21px;
+    height: 21px;
+
+    fill: currentColor;
+}
+
+.social-link:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .social-link {
+        width: 38px;
+        height: 38px;
+    }
+
+    .social-link svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+    
+/* ========================================
+   FIX: PROCESS MOBILE — 1 STEP PER ROW
+======================================== */
+@media (max-width: 768px) {
+
+    #process .process-schema__flow {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        margin-bottom: 30px;
+    }
+
+    #process .process-schema__flow::before {
+        top: 28px;
+        bottom: 28px;
+        left: 27px;
+        right: auto;
+        width: 3px;
+        height: auto;
+    }
+
+    #process .process-step {
+        display: grid !important;
+        grid-template-columns: 64px minmax(0, 1fr) !important;
+        align-items: start;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+    }
+
+    #process .process-step__marker {
+        width: 56px;
+        height: 56px;
+        margin: 0;
+        box-shadow:
+            0 0 0 5px #fff,
+            0 6px 18px rgba(12,102,102,.10);
+    }
+
+    #process .process-step__marker svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    #process .process-step__number {
+        width: 23px;
+        height: 23px;
+        font-size: 9px;
+    }
+
+    #process .process-step__card {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        padding: 17px;
+        border-radius: 14px;
+    }
+
+    #process .process-schema__result {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    #process .process-schema__result .btn {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+
+    #process .process-step {
+        grid-template-columns: 56px minmax(0, 1fr) !important;
+        gap: 8px;
+    }
+
+    #process .process-step__marker {
+        width: 50px;
+        height: 50px;
+    }
+
+    #process .process-schema__flow::before {
+        left: 24px;
+    }
+
+    #process .process-step__card {
+        padding: 15px;
+    }
+}
+
+</style>
 </head>
 <body>
     <div class="bg-bones"></div>
@@ -1132,7 +1960,8 @@
                     <li><a href="#routes">Лечение</a></li>
                     <li><a href="#diagnostics">Диагностика</a></li>
                     <li><a href="#doctors">Врачи</a></li>
-                    <li><a href="#footer">Цены</a></li>
+                    <li><a href="#price">Цены</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
                 </ul>
                 <div class="mobile-nav-actions">
                     <a href="tel:+73832479017" class="header-phone">+7 (383) 247-90-17</a>
@@ -1338,17 +2167,20 @@
                     <div class="service-card">
                         <img src="uzi.webp" alt="УЗИ суставов" class="service-img" loading="lazy">
                         <h3>Более 50 видов исследований УЗИ</h3>
+                        <span class="process-step__eyebrow">УЗИ аппарат SonoScape S40Exp, Китай</span>
                         <p>УЗИ суставов и мягких тканей.<br>Безопасное и информативное исследование, позволяющее оценить состояние суставов, связок, сухожилий и мягких тканей без лучевой нагрузки. Помогает оценить состояние суставов, связок, сухожилий, мышц и мягких тканей, выявить воспаление, скопление жидкости и другие изменения.</p>
                     </div>
                     <div class="service-card">
                         <img src="rentgen.webp" alt="Рентген" class="service-img" loading="lazy">
                         <h3>Современный низкодозовый цифровой рентген из Кореи</h3>
+                        <span class="process-step__eyebrow">SG Helath Care Desung X-ray Collimator (Beam limiting Device) Корея</span>
                         <p>Описание в течение 15 минут;<br>Более 70 видов диагностики;<br>Сделаем снимок и приём за одно посещение;<br>Помогает выявить переломы, вывихи, изменения костной ткани и суставов.</p>
                     </div>
                     <div class="service-card">
                         <img src="analizy.webp" alt="Анализы" class="service-img" loading="lazy">
                         <h3>Лабораторная диагностика</h3>
-                        <p>Анализы разных профилей — в одной клинике<br>Более 4000 видов анализов<br>Доступные цены<br>Комплексные исследования</p>
+                        <span class="process-step__eyebrow">Более 4000 видов анализов</span>
+                        <p>Анализы разных профилей — все в одной клинике<br>Доступные цены<br>Комплексные исследования, чек-апы</p>
                     </div>
                 </div>
             </div>
@@ -1364,11 +2196,6 @@
                         От первого осмотра<br>
                         до понятного маршрута лечения
                     </h2>
-
-                    <p class="process-schema__subtitle">
-                        Врач последовательно разберётся в жалобах, при необходимости проведёт диагностику,
-                        объяснит причину симптомов и определит дальнейшую тактику лечения.
-                    </p>
                 </div>
 
                 <div class="process-schema__flow">
@@ -1491,21 +2318,24 @@
                             <div class="doctor-img-wrap">
                                 <img src="img/gushin.webp" alt="Гущин Виктор Владимирович" loading="lazy"><div class="experience-badge">7 лет практики</div>
                             </div><div class="doctor-info"><h3>Гущин Виктор Владимирович</h3><span class="doctor-position">Травматолог-ортопед</span>
-                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.8</span>
+                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">5.0</span>
                                     <span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">124 отзыва</span></div>
                                     <div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>травмы;</li><li>переломы и вывихи;</li>
                                         <li>заболевания суставов;</li><li>восстановление после травм.</li></ul></div>
-                                        <div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
+                                        <div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button>
+                                            <button class="btn btn-outline-light" onclick="window.open('https://prodoctorov.ru/novosibirsk/vrach/1157165-gushin/#otzivi', '_blank')">Посмотреть отзывы</button></div></div></div></div>
                     </div>
                     <div class="doctor-card">
                         <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap">
                             <img src="img/salimov.webp" alt="Салимов Салим Шарифович" loading="lazy"><div class="experience-badge">7 лет практики</div></div>
                             <div class="doctor-info"><h3>Салимов Салим Шарифович</h3><span class="doctor-position">Травматолог-ортопед</span>
-                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.9</span>
+                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">5.0</span>
                                     <span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">84 отзыва</span></div>
                                     <div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>спортивные травмы;</li>
                                         <li>заболевания суставов (артрозы);</li><li>патологии стопы (пяточная шпора);</li><li>ушибы, вывихи, растяжения.</li></ul>
-                                    </div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
+                                    </div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div>
+                                    <div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button>
+                                        <button class="btn btn-outline-light" onclick="window.open('https://prodoctorov.ru/novosibirsk/vrach/761063-salimov/#otzivi', '_blank')">Посмотреть отзывы</button></div></div></div></div>
                     </div>
                     <div class="doctor-card">
                         <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap">
@@ -1515,19 +2345,22 @@
                                     <span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">64 отзыва</span></div>
                                     <div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>травмы, вывихи, переломы;</li><li>лечение ран;</li>
                                         <li>укусы клеща;</li><li>повреждения связок.</li></ul></div>
-                                        <div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
+                                        <div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div>
+                                        <div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="window.open('https://prodoctorov.ru/novosibirsk/vrach/1286786-pochaev/#otzivi', '_blank')">Посмотреть отзывы</button></div></div></div></div>
                     </div>
                     <div class="doctor-card">
                         <div class="doctor-card-inner"><div class="doctor-card-front"><div class="doctor-img-wrap">
                             <img src="img/han.webp" alt="Хан Владислав Сергеевич" loading="lazy"><div class="experience-badge">5 лет практики</div></div>
                             <div class="doctor-info"><h3>Хан Владислав Сергеевич</h3><span class="doctor-position">Травматолог-ортопед</span>
-                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.8</span>
+                                <div class="doctor-rating"><span class="stars">★★★★★</span><span class="rating-value">4.9</span>
                                     <span class="rating-count">(ПроДокторов)</span><span class="rating-reviews">45 отзывов</span></div>
                                     <div class="doctor-specs"><p class="specs-title">Специализация:</p><ul><li>боли в суставах и позвоночнике;</li>
                                         <li>артрозы и дегенеративные заболевания;</li><li>спортивные травмы, растяжения;</li><li>ушибы, вывихи и переломы.</li>
-                                    </ul></div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span><span class="price-amount">2 900 ₽</span></div><div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button><button class="btn btn-outline-light" onclick="alert('Здесь будет открываться блок с отзывами')">Посмотреть отзывы</button></div></div></div></div>
+                                    </ul></div><div class="doctor-price-tag"><span class="price-label">Первичный прием</span>
+                                        <span class="price-amount">2 900 ₽</span></div>
+                                        <div class="doctor-actions"><button class="btn" onclick="openModal('consultModal')">Записаться</button>
+                                           <button class="btn btn-outline-light" onclick="window.open('https://prodoctorov.ru/novosibirsk/vrach/1105647-han/#otzivi', '_blank')">Посмотреть отзывы</button></div></div></div></div>
                     </div>
-                </div>
             </div>
         </section>
 
@@ -1555,22 +2388,729 @@
                     </div>
                 </div>
 
-                <h3 style="margin-bottom:30px;text-align:center;">Отзывы пациентов</h3>
-                <div class="reviews-grid">
-                    <div class="review-card"><div class="stars">★★★★★</div><p>Обратилась с сильной болью в колене (артроз 2 ст.). Думала, уже без операции не обойтись. Врач провел курс внутрисуставных инъекций и тейпирование. Боль ушла через месяц!</p><div class="author">Елена, 54 года</div></div>
-                    <div class="review-card"><div class="stars">★★★★★</div><p>Заказал индивидуальные стельки и прошел курс PRP-терапии при пяточной шпоре. Хожу без боли уже полгода. Отличная клиника, грамотные травматологи-ортопеды.</p><div class="author">Сергей, 42 года</div></div>
+<h3 style="margin-bottom:30px;text-align:center;">Отзывы пациентов</h3>
+
+<div class="reviews-slider">
+
+    <div class="reviews-slider__viewport">
+
+        <div class="reviews-slider__track">
+
+            <!-- ОТЗЫВЫ 1–2 -->
+            <div class="reviews-slide">
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        Обратилась к врачу после травмы колена. Очень смутила МРТ​. Много нехорошего. Записалась к врачу, так как надо было быстро осмотреть ногу и МРТ. Плюс нужен был врач, который не торопит и индивидуально подходит к лечению. Но врач был очень ответственным, все рассказал, усвоил, тщательно осмотрел. Ответил на все вопросы и не торопил.
+                        Не торопится, все тщательно. Отвечал на все вопросы, посмотрел ногу вдоль и поперек. Успокоил, что не надо делать операцию, рассказал подробно про все лечение. Принял вовремя и вёл приём все тридцать минут. Также спросил, может ещё вопросы есть. Как травматолога, обязательно посоветую. Добрый, ответственный и с индивидуальным подходом.
+                    </p>
+
+                    <div class="review-card__footer">
+                        <div class="author">Пациент +7 913 46XXXXX</div>
+
+                        <img
+                            class="review-card__source"
+                            src="https://prodoctorov.ru/static/_v1/pd/logos/ui-kit/prodoctorov-logo.svg"
+                            alt="ПроДокторов"
+                        >
+                    </div>
                 </div>
 
-                <div class="faq">
-                    <h3 style="text-align:center;margin-bottom:30px;">Частые вопросы</h3>
-                    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Можно ли вылечить артроз без операции?</div><div class="faq-answer"><p>Да, на ранних и средних стадиях артроз успешно лечится безоперационными методами: PRP-терапия, протезы синовиальной жидкости, физиотерапия и ЛФК. Операция показана только при полном разрушении сустава.</p></div></div>
-                    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Каковы сроки восстановления после травмы?</div><div class="faq-answer"><p>Сроки зависят от тяжести: ушибы проходят за 1-2 недели, растяжения — 3-4 недели, переломы и повреждения менисков требуют от 1,5 до 3 месяцев. Мы составляем индивидуальный план реабилитации для ускорения процесса.</p></div></div>
-                    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Нужно ли направление на рентген или УЗИ?</div><div class="faq-answer"><p>Нет, направление не требуется. У нас в клинике есть собственная служба диагностики, вы можете записаться на УЗИ суставов или рентген напрямую, а сразу после получить консультацию травматолога.</p></div></div>
-                    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Как записаться на прием?</div><div class="faq-answer"><p>Оставьте заявку на сайте через кнопку "Консультация", или позвоните по телефону, указанному в шапке и подвале сайта. Администратор подберет удобное время.</p></div></div>
-                    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Сколько стоит консультация и лечение?</div><div class="faq-answer"><p>Консультация травматолога-ортопеда стоит от 2000 руб. Точная цена лечения зависит от методов (PRP, блокады, стельки) и определяется после диагностики. Ознакомиться с базовым прайсом можно в подвале сайта.</p></div></div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        Записался к Владиславу Сергеевичу на контрольный осмотр кисти. Врач сработал профессионально: посмотрел подвижность, оценил динамику после прошлых назначений. Объяснил текущую ситуацию коротко и без лишней воды.
+                        Расписал дальнейший график нормальных нагрузок для руки, чтобы не было рецидива. Нормальный, адекватный специалист!
+                    </p>
+
+                    <div class="review-card__footer">
+                        <div class="author">Пациент +7 920 59XXXXX</div>
+
+                        <img
+                            class="review-card__source"
+                            src="https://prodoctorov.ru/static/_v1/pd/logos/ui-kit/prodoctorov-logo.svg"
+                            alt="ПроДокторов"
+                        >
+                    </div>
                 </div>
+
+            </div>
+
+
+            <!-- ОТЗЫВЫ 3–4 -->
+            <div class="reviews-slide">
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        Салима Шарифовича можно назвать уже семейным доктором. Ранее я была у него на приеме, делали плазмотерапию, от результата которой я - в восторге.
+                        Вчера привела маму на прием, со шпорой и болью в колене после операции.
+                        Понравилось
+                        Врач очень внимательный к деталям, на приеме - все четко, без «воды». Все подробно рассказывает, лишнего и ненужного не назначает. Рекомендуем врача.
+                    </p>
+
+                    <div class="review-card__footer">
+                        <div class="author">Пациент +7 913 70XXXXX</div>
+
+                        <img
+                            class="review-card__source"
+                            src="https://prodoctorov.ru/static/_v1/pd/logos/ui-kit/prodoctorov-logo.svg"
+                            alt="ПроДокторов"
+                        >
+                    </div>
+                </div>
+
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        К травматологу Виктору Владимировичу я обратилась в первый раз. Нашла данного специалиста через приложение МедТочка и выбрала его,
+                        ориентируясь на отзывы, время работы и местоположение самой клиники.
+                        Понравилось
+                        Я обратилась к травматологу с жалобами, и он в итоге поставил конкретный диагноз. Виктор Владимирович назначил исследования,
+                        и я планирую вернуться к нему повторно с результатами. Впечатление о докторе осталось приятное. Он располагает к себе, не настаивает на каких-то лишних обследованиях. В целом, было комфортно на консультации. Я сама опоздала на приём, но меня подождали и всё прошло быстро. Врач уделил мне примерно 40 минут, так как ещё был рентген​ в середине приёма. Этого времени хватило, чтобы успеть всё спросить и уточнить. На консультации специалист провёл осмотр, после чего изучил результаты рентгена и дал рекомендации. Он выписал лечение, и сейчас мы уточняем диагноз с помощью результатов МРТ​. Терапия уже помогает, я чувствую улучшения.
+                        Конечно, Виктора Владимировича можно порекомендовать другим людям. В дальнейшем я планирую оставаться у него на контроле.
+                    </p>
+
+                    <div class="review-card__footer">
+                        <div class="author">Пациент +7 905 95XXXXX</div>
+
+                        <img
+                            class="review-card__source"
+                            src="https://prodoctorov.ru/static/_v1/pd/logos/ui-kit/prodoctorov-logo.svg"
+                            alt="ПроДокторов"
+                        >
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ОТЗЫВ 5 -->
+            <div class="reviews-slide">
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        Наблюдалась у врача с апикальным переломом​ лодыжки со смещением.
+                        Понравилось
+                        Врач внимательный и приятный в общении, аккуратно помог снять гипс, отвечал на все мои вопросы, времени уделял достаточно и никуда не торопил.
+                    </p>
+
+                    <div class="review-card__footer">
+                        <div class="author">Пациент +7 923 24XXXXX</div>
+
+                        <img
+                            class="review-card__source"
+                            src="https://prodoctorov.ru/static/_v1/pd/logos/ui-kit/prodoctorov-logo.svg"
+                            alt="ПроДокторов"
+                        >
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        Обратилась по поводу болей в правой руке. Очень болело плечо и сустав. Обратилась, так как уже была в этой клинике у другого врача. 
+                        Врач очень внимательный, доброжелательный. Осмотр качественный, доктор очень скрупулезный. У меня уже был снимок МРТ​. Дополнительно пока не понадобилось. Очень понятен план лечения, предоставлены памятки. 
+                        Очень довольна, что обратилась именно к этому доктору. Обязательно поделюсь со знакомыми. Посоветую обращаться.
+                    </p>
+
+                    <div class="review-card__footer">
+                        <div class="author">Пациент +7 983 32XXXXX</div>
+
+                        <img
+                            class="review-card__source"
+                            src="https://prodoctorov.ru/static/_v1/pd/logos/ui-kit/prodoctorov-logo.svg"
+                            alt="ПроДокторов"
+                        >
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="faq">
+
+    <h3 style="text-align:center;margin-bottom:30px;">
+        Частые вопросы
+    </h3>
+
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            Болит колено — к какому врачу обращаться?
+        </div>
+
+        <div class="faq-answer">
+            <p>
+                При боли в колене, отёке, хрусте, ограничении движения или дискомфорте после травмы
+                стоит обратиться к травматологу-ортопеду. Врач проведёт осмотр, оценит состояние
+                сустава и определит, нужна ли дополнительная диагностика — например, рентген
+                или УЗИ коленного сустава.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            Как лечат артроз коленного сустава без операции?
+        </div>
+
+        <div class="faq-answer">
+            <p>
+                Тактика лечения артроза зависит от стадии заболевания, выраженности боли
+                и состояния сустава. Травматолог-ортопед может подобрать консервативное лечение,
+                рекомендации по нагрузке и восстановлению. При наличии показаний могут применяться
+                внутрисуставные процедуры, PRP-терапия и плазмотерапия суставов.
+                Необходимость хирургического лечения определяется врачом индивидуально.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            Что лучше при боли в суставе — УЗИ или рентген?
+        </div>
+
+        <div class="faq-answer">
+            <p>
+                Рентген и УЗИ решают разные диагностические задачи. Рентген позволяет оценить
+                состояние костей и костных структур сустава, а УЗИ используется для исследования
+                мягких тканей, сухожилий, связок и других структур в области сустава.
+                Какое исследование необходимо именно в вашем случае, врач определяет
+                с учётом жалоб и результатов осмотра.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            Когда нужно обращаться к травматологу-ортопеду после травмы?
+        </div>
+
+        <div class="faq-answer">
+            <p>
+                Консультация травматолога-ортопеда необходима при боли после падения или удара,
+                выраженном отёке, ограничении движения, подозрении на перелом, вывих или растяжение.
+                Также обратиться к врачу стоит, если после травмы боль сохраняется или движения
+                в суставе полностью не восстановились.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            Сколько стоит приём травматолога-ортопеда в Новосибирске?
+        </div>
+
+        <div class="faq-answer">
+            <p>
+                В травмпункте Медклик в Новосибирске первичный приём травматолога-ортопеда
+                стоит 2 900 ₽, повторный — 2 700 ₽. Если врачу потребуется дополнительная
+                диагностика или лечебные процедуры, их стоимость рассчитывается отдельно.
+                Актуальные цены на приём, рентген, УЗИ суставов и лечение указаны
+                в разделе с ценами на этой странице.
+            </p>
+        </div>
+    </div>
+
+</div>
             </div>
         </section>
+
+
+            <section class="trauma-price" id="price">
+                <div class="container">
+
+                    <div class="trauma-price__header">
+
+                        <h2 class="trauma-price__title">
+                            Цены на приём, лечение и диагностику
+                        </h2>
+                    </div>
+
+
+                    <div class="trauma-price__groups">
+
+
+                        <!-- ПРИЁМ И ЛЕЧЕНИЕ -->
+                        <div class="trauma-price__group">
+
+                            <div class="trauma-price__group-header">
+                                <div class="trauma-price__icon">
+                                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                                        <path d="M15 7h18a4 4 0 0 1 4 4v30H11V11a4 4 0 0 1 4-4Z"/>
+                                        <path d="M18 17h12"/>
+                                        <path d="M18 24h12"/>
+                                        <path d="M18 31h7"/>
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <h3>Приём и лечение</h3>
+                                    <p>Консультации и основные манипуляции травматолога-ортопеда</p>
+                                </div>
+                            </div>
+
+
+                            <div class="trauma-price__list">
+
+                                <div class="trauma-price__item trauma-price__item--accent">
+                                    <div class="trauma-price__name">
+                                        Приём травматолога-ортопеда первичный
+                                    </div>
+                                    <div class="trauma-price__value">2 900 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Приём травматолога-ортопеда повторный
+                                    </div>
+                                    <div class="trauma-price__value">2 700 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Приём: осмотр, перевязка, снятие швов, блокад
+                                    </div>
+                                    <div class="trauma-price__value">1 500 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Внутрисуставное введение лекарственных препаратов
+                                        <span class="trauma-price__note">без учёта препарата</span>
+                                    </div>
+                                    <div class="trauma-price__value">2 400 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        PRP-терапия суставов
+                                        <span class="trauma-price__note">с учётом 1 пробирки</span>
+                                    </div>
+                                    <div class="trauma-price__value">8 000 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Плазмотерапия суставов
+                                        <span class="trauma-price__note">с учётом 1 пробирки</span>
+                                    </div>
+                                    <div class="trauma-price__value">5 000 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Периартикулярная блокада
+                                        <span class="trauma-price__note">без учёта препарата</span>
+                                    </div>
+                                    <div class="trauma-price__value">1 440 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Блокада места перелома
+                                        <span class="trauma-price__note">без учёта препарата</span>
+                                    </div>
+                                    <div class="trauma-price__value">480 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Репозиция 1-й степени сложности
+                                        <span class="trauma-price__note">
+                                            фаланги, пястные, плюсневые кости, дистальный радиус
+                                        </span>
+                                    </div>
+                                    <div class="trauma-price__value">2 400 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Репозиция 2-й степени сложности
+                                        <span class="trauma-price__note">
+                                            предплечье, лодыжки, голень
+                                        </span>
+                                    </div>
+                                    <div class="trauma-price__value">3 600 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Вправление вывиха в крупном суставе
+                                    </div>
+                                    <div class="trauma-price__value">3 600 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Вправление вывихов малых суставов
+                                    </div>
+                                    <div class="trauma-price__value">1 140 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Наложение гипсовой повязки малой
+                                    </div>
+                                    <div class="trauma-price__value">960 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Наложение гипсовой повязки средней
+                                        <span class="trauma-price__note">
+                                            предплечье, кисть, стопа, лодыжки
+                                        </span>
+                                    </div>
+                                    <div class="trauma-price__value">1 700 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Наложение гипсовой повязки большой
+                                    </div>
+                                    <div class="trauma-price__value">3 000 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Снятие гипсовой повязки или лонгеты
+                                    </div>
+                                    <div class="trauma-price__value">900 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Наложение полиуретановой повязки малой
+                                        <span class="trauma-price__note">без учёта бинтов</span>
+                                    </div>
+                                    <div class="trauma-price__value">2 160 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Наложение полиуретановой повязки большой
+                                        <span class="trauma-price__note">без учёта бинтов</span>
+                                    </div>
+                                    <div class="trauma-price__value">3 360 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Снятие полиуретановой повязки или лонгеты
+                                    </div>
+                                    <div class="trauma-price__value">1 200 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Удаление спиц Киршнера
+                                        <span class="trauma-price__note">без учёта анестезии</span>
+                                    </div>
+                                    <div class="trauma-price__value">1 200 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Удаление позиционного винта под местной анестезией
+                                    </div>
+                                    <div class="trauma-price__value">10 500 ₽</div>
+                                </div>
+
+                            </div>
+
+                            <button
+                                class="trauma-price__toggle"
+                                type="button"
+                                aria-expanded="false"
+                            >
+                                <span>Полный прайс</span>
+
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+
+
+
+                        <!-- РЕНТГЕН -->
+                        <div class="trauma-price__group">
+
+                            <div class="trauma-price__group-header">
+                                <div class="trauma-price__icon">
+                                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                                        <rect x="8" y="8" width="32" height="32" rx="5"/>
+                                        <path d="M15 31l6-7 5 4 7-9"/>
+                                        <circle cx="33" cy="18" r="3"/>
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <h3>Рентген</h3>
+                                    <p>Основные исследования при травмах и заболеваниях суставов</p>
+                                </div>
+                            </div>
+
+
+                            <div class="trauma-price__list">
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография коленного сустава в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 680 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография коленных суставов в двух проекциях стоя
+                                    </div>
+                                    <div class="trauma-price__value">3 120 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография голеностопного сустава в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 680 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография тазобедренного сустава в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 680 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография плечевого сустава в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 680 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография локтевого сустава в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 320 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография лучезапястного сустава в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 320 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография костей кисти в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 680 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография костей стопы в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 680 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография костей предплечья в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 320 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография костей голени в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 320 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография бедренной кости в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 560 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография пяточной кости в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">1 680 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        Рентгенография ключицы в двух проекциях
+                                    </div>
+                                    <div class="trauma-price__value">2 000 ₽</div>
+                                </div>
+
+                            </div>
+
+                            <button
+                                class="trauma-price__toggle"
+                                type="button"
+                                aria-expanded="false"
+                            >
+                                <span>Полный прайс</span>
+
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+
+
+                        <!-- УЗИ -->
+                        <div class="trauma-price__group">
+
+                            <div class="trauma-price__group-header">
+                                <div class="trauma-price__icon">
+                                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                                        <path d="M10 33c7-1 11-5 13-12"/>
+                                        <path d="M15 37c9-2 15-8 17-17"/>
+                                        <path d="M21 40c10-4 16-11 18-21"/>
+                                        <circle cx="12" cy="18" r="4"/>
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <h3>УЗИ суставов</h3>
+                                    <p>Исследование суставов и мягких тканей</p>
+                                </div>
+                            </div>
+
+
+                            <div class="trauma-price__list">
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        УЗИ коленных суставов
+                                    </div>
+                                    <div class="trauma-price__value">2 500 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        УЗИ тазобедренных суставов
+                                    </div>
+                                    <div class="trauma-price__value">2 500 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        УЗИ плечевых суставов
+                                    </div>
+                                    <div class="trauma-price__value">2 500 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        УЗИ локтевых суставов
+                                    </div>
+                                    <div class="trauma-price__value">2 500 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        УЗИ лучезапястных суставов
+                                    </div>
+                                    <div class="trauma-price__value">2 500 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        УЗИ суставов кисти
+                                    </div>
+                                    <div class="trauma-price__value">2 500 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        УЗИ голеностопных суставов
+                                    </div>
+                                    <div class="trauma-price__value">2 500 ₽</div>
+                                </div>
+
+                                <div class="trauma-price__item">
+                                    <div class="trauma-price__name">
+                                        УЗИ мягких тканей
+                                        <span class="trauma-price__note">одна анатомическая зона</span>
+                                    </div>
+                                    <div class="trauma-price__value">2 000 ₽</div>
+                                </div>
+
+                            </div>
+
+                            <button
+                                class="trauma-price__toggle"
+                                type="button"
+                                aria-expanded="false"
+                            >
+                                <span>Полный прайс</span>
+
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- CTA -->
+                    <div class="trauma-price__cta">
+
+                        <div class="trauma-price__cta-text">
+                            <h3>Не знаете, какое обследование нужно?</h3>
+
+                            <p>
+                                Начните с консультации травматолога-ортопеда.
+                                Врач проведёт осмотр и определит необходимый объём диагностики.
+                            </p>
+                        </div>
+
+                        <button
+                            class="btn trauma-price__button"
+                            type="button"
+                            onclick="openModal('consultModal')"
+                        >
+                            Записаться на приём
+                        </button>
+
+                    </div>
+
+                </div>
+            </section>
 
         <section>
             <div class="container">
@@ -1588,7 +3128,7 @@
 
         <section class="contacts-section" id="contacts">
             <div class="container">
-                <h2>Как нас найти</h2>
+                <h2><a href="#contacts">Как нас найти</a></h2>
                 <div class="contacts-grid">
                     <div class="contact-info-card">
                         <h3>Медклик Травматология</h3>
@@ -1600,7 +3140,53 @@
                             <div class="schedule-row"><span class="schedule-day">Воскресенье</span><span class="schedule-time">8:00 — 21:30</span></div>
                             <div class="schedule-row highlight"><span class="schedule-day">Травмпункт</span><span class="schedule-time">Без очередей</span></div>
                         </div>
-                        <div class="social-links"><a href="#" class="social-link" title="VK">VK</a><a href="#" class="social-link" title="Telegram">TG</a><a href="#" class="social-link" title="WhatsApp">WA</a></div>
+                    <div class="social-links">
+
+                        <!-- VK -->
+                        <a
+                            href="https://vk.ru/medclick54"
+                            class="social-link"
+                            title="VK"
+                            aria-label="VK"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M3.5 7.2c.1 4.8 2.5 8.6 6.8 8.6h.4v-2.7c2 .2 3.5 1.7 4.1 2.7H18c-.8-1.4-2.8-3.4-4-4.1 1.2-.8 3-3 3.6-4.5h-3c-.5 1.2-1.9 3.2-3 3.4V7.2H8.9v6.1C7.4 12.9 5.6 9.4 5.5 7.2h-2Z"/>
+                            </svg>
+                        </a>
+
+
+                        <!-- Telegram -->
+                        <a
+                            href="https://t.me/mnogoclinica"
+                            class="social-link"
+                            title="Telegram"
+                            aria-label="Telegram"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 4.6 17.9 19c-.2 1-1 1.2-1.8.7l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.8-8c.4-.3-.1-.5-.6-.2L5.7 12.8 1 11.3c-1-.3-1-1 .2-1.5L19.6 2.7c.9-.3 1.7.2 1.4 1.9Z"/>
+                            </svg>
+                        </a>
+
+
+                        <!-- MAX -->
+                        <a
+                            href="https://max.ru/id5404311515_biz"
+                            class="social-link"
+                            title="MAX"
+                            aria-label="MAX"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4 6.5h3.3l4.7 6.2 4.7-6.2H20v11h-3.1v-6.1L12 17.6 7.1 11.4v6.1H4v-11Z"/>
+                            </svg>
+                        </a>
+
+                    </div>
                     </div>
                     <div>
                         <div class="map-container"><a href="https://yandex.ru/maps/?um=constructor%3A65bad059f761292ec4cc712a1e1b4952c3581db4a8c5c275ece34c7cf7688886&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A65bad059f761292ec4cc712a1e1b4952c3581db4a8c5c275ece34c7cf7688886&amp;width=500&amp;height=400&amp;lang=ru_RU" alt="Расположение клиники Медклик на карте Яндекса" loading="lazy"></a></div>
@@ -1615,8 +3201,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col"><div class="footer__logo"><img src="logo.svg" alt="Медклик Травма"></div><p style="color:rgba(255,255,255,.7);font-size:.8rem;">Лицензия: Л041-01125-54/00586567</p></div>
-                <div class="footer-col"><h4>Прайс-лист</h4><ul class="price-list"><li><span>Консультация травматолога</span><span>от 2000 ₽</span></li><li><span>УЗИ суставов</span><span>от 1800 ₽</span></li><li><span>Рентген</span><span>от 1500 ₽</span></li><li><span>PRP-терапия</span><span>от 4500 ₽</span></li><li><span>Ортопедические стельки</span><span>от 6000 ₽</span></li></ul></div>
-                <div class="footer-col"><h4>Навигация</h4><ul><li><a href="#routes">Травмы</a></li><li><a href="#routes">Суставы</a></li><li><a href="#diagnostics">Диагностика</a></li><li><a href="#routes">Лечение</a></li><li><a href="#doctors">Врачи</a></li><li><a href="#footer">Цены</a></li><li><a href="#proof">Статьи / FAQ</a></li></ul></div>
+                <div class="footer-col"><h4>Прайс-лист</h4><ul class="price-list"><li><span>Консультация травматолога</span><span>2900 ₽</span></li><li><span>УЗИ суставов</span><span>от 1800 ₽</span></li><li><span>Рентген</span><span>от 1500 ₽</span></li><li><span>PRP-терапия</span><span>от 8000 ₽</span></li></ul></div>
+                <div class="footer-col"><h4>Навигация</h4><ul><li><a href="#routes">Травмы</a></li><li><a href="#routes">Суставы</a></li><li><a href="#diagnostics">Диагностика</a></li><li><a href="#routes">Лечение</a></li><li><a href="#doctors">Врачи</a></li><li><a href="#footer_price">Цены</a></li><li><a href="#proof">Статьи / FAQ</a></li></ul></div>
                 <div class="footer-col"><h4>Контакты</h4><p>г. Новосибирск, Новогодняя улица 23/2</p><p><a href="tel:+73832051561" style="color:#fff;font-weight:700;">+7 (383) 205 15 61</a></p><p><a href="mailto:nsk@mnogoclinica.ru">nsk@mnogoclinica.ru</a></p><p>пн-сб с 07.30 до 21.30 / вс с 8:00 до 21:30</p></div>
             </div>
             <div class="footer-warning">Имеются противопоказания, необходима консультация специалиста. Регистрационный номер лицензии: Л041-01125-54/00586567.</div>
@@ -1628,7 +3214,7 @@
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('consultModal')" aria-label="Закрыть">✕</button>
             <h2>Запись на консультацию</h2>
-            <p style="margin-bottom:20px;">Оставьте контакты, мы перезвоним в течение 15 минут.</p>
+            <p style="margin-bottom:20px;">Оставьте контакты, мы перезвоним в течение 15 минут</p>
             <form onsubmit="submitForm(event)">
                 <input type="text" placeholder="Ваше имя" required autocomplete="name">
                 <input type="tel" placeholder="Телефон" required autocomplete="tel">
@@ -1850,6 +3436,65 @@ function updatePromoTimer() {
 updatePromoTimer();
 setInterval(updatePromoTimer, 1000);
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const slider = document.querySelector('.reviews-slider');
+
+    if (!slider) return;
+
+    const track = slider.querySelector('.reviews-slider__track');
+    const slides = slider.querySelectorAll('.reviews-slide');
+
+    if (!track || slides.length <= 1) return;
+
+    let currentSlide = 0;
+    const intervalTime = 20000;
+
+    function showSlide(index) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+
+        showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, intervalTime);
+
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll('.trauma-price__toggle').forEach(function (button) {
+
+        button.addEventListener('click', function () {
+
+            const group = this.closest('.trauma-price__group');
+            if (!group) return;
+
+            const isOpen = group.classList.toggle('is-open');
+            const buttonText = this.querySelector('span');
+
+            this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+            if (buttonText) {
+                buttonText.textContent = isOpen ? 'Свернуть' : 'Полный прайс';
+            }
+
+        });
+
+    });
+
+});
+</script>
 
 </body>
 </html>
