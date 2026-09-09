@@ -374,29 +374,298 @@
         #diagnostics .service-card p { margin: 0; color: #626a6a; font-size: 14px; line-height: 1.65; text-align: left; }
 
         /* PROCESS */
-        .process-schema { --process-green:#0C6666; --process-lime:#A5C130; --process-muted:#6F7575; --process-border:#E5EAEA; --process-bg:#F7FAFA; padding: 90px 0 100px; background: radial-gradient(circle at 10% 20%,rgba(165,193,48,.08),transparent 24%),radial-gradient(circle at 90% 80%,rgba(12,102,102,.07),transparent 28%),#fff; overflow: hidden; }
-        .process-schema__header { max-width: 820px; margin: 0 auto 65px; text-align: center; }
-        .process-schema__label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; padding: 8px 14px; border-radius: 100px; background: rgba(12,102,102,.08); color: var(--process-green); font-size: 13px; font-weight: 700; text-transform: uppercase; }
-        .process-schema__label::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--process-lime); }
-        .process-schema__title { margin:0 0 18px; font-size:clamp(32px,4vw,48px); letter-spacing:-.035em; color:var(--process-green); }
-        .process-schema__subtitle { max-width:670px; margin:0 auto; font-size:18px; color:var(--process-muted); }
-        .process-schema__flow { position:relative; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:18px; margin-bottom:50px; }
-        .process-schema__flow::before { content:''; position:absolute; z-index:0; top:45px; left:9%; right:9%; height:3px; background:linear-gradient(90deg,var(--process-green),var(--process-lime)); border-radius:10px; }
-        .process-step { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; }
-        .process-step__marker { position:relative; width:92px; height:92px; display:flex; align-items:center; justify-content:center; margin-bottom:22px; border-radius:50%; background:#fff; border:3px solid var(--process-green); box-shadow:0 0 0 8px #fff,0 8px 24px rgba(12,102,102,.12); color:var(--process-green); }
-        .process-step--final .process-step__marker { background:var(--process-lime); border-color:var(--process-lime); color:#fff; }
-        .process-step__number { position:absolute; top:-6px; right:-3px; width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:var(--process-green); border:3px solid #fff; color:#fff; font-size:11px; font-weight:700; }
-        .process-step__marker svg { width:38px; height:38px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-        .process-step__card { width:100%; height:100%; padding:25px 22px 24px; background:#fff; border:1px solid var(--process-border); border-radius:18px; text-align:left; box-shadow:0 8px 30px rgba(25,66,66,.05); }
-        .process-step__eyebrow { display:block; margin-bottom:9px; color:var(--process-lime); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
-        .process-step__card h3 { margin:0 0 11px; color:var(--process-green); font-size:19px; }
-        .process-step__card p { margin:0; color:var(--process-muted); font-size:14px; }
-        .process-step__tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
-        .process-step__tag { display:inline-flex; padding:6px 9px; border-radius:7px; background:var(--process-bg); color:var(--process-green); font-size:11px; font-weight:600; }
-        .process-schema__result { position:relative; display:flex; align-items:center; justify-content:space-between; gap:35px; max-width:1050px; margin:0 auto; padding:30px 34px; background:var(--process-green); border-radius:22px; overflow:hidden; }
-        .process-schema__result-title { margin:0 0 7px; color:#fff; font-size:22px; }
-        .process-schema__result-text p { margin:0; color:rgba(255,255,255,.78); font-size:14px; }
-        .process-schema__result .btn { flex-shrink:0; background:#fff; color:var(--process-green); border-color:#fff; }
+/* PROCESS */
+
+.process-schema {
+    --process-green: #0C6666;
+    --process-lime: #A5C130;
+    --process-muted: #6F7575;
+    --process-border: #E5EAEA;
+    --process-bg: #F7FAFA;
+
+    padding: 90px 0 100px;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(165,193,48,.08), transparent 24%),
+        radial-gradient(circle at 90% 80%, rgba(12,102,102,.07), transparent 28%),
+        #fff;
+    overflow: hidden;
+}
+
+
+/* HEADER */
+
+.process-schema__header {
+    max-width: 820px;
+    margin: 0 auto 65px;
+    text-align: center;
+}
+
+.process-schema__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border-radius: 100px;
+    background: rgba(12,102,102,.08);
+    color: var(--process-green);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.process-schema__label::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--process-lime);
+}
+
+.process-schema__title {
+    margin: 0 0 18px;
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: -.035em;
+    color: var(--process-green);
+}
+
+.process-schema__subtitle {
+    max-width: 670px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: var(--process-muted);
+}
+
+
+/* STEPS */
+
+.process-schema__flow {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.process-schema__flow::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 45px;
+    left: 15%;
+    right: 15%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--process-green),
+        var(--process-lime)
+    );
+    border-radius: 10px;
+}
+
+.process-step {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 0;
+}
+
+.process-step__marker {
+    position: relative;
+
+    width: 92px;
+    height: 92px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--process-green);
+
+    box-shadow:
+        0 0 0 8px #fff,
+        0 8px 24px rgba(12,102,102,.12);
+
+    color: var(--process-green);
+}
+
+.process-step--final .process-step__marker {
+    background: var(--process-lime);
+    border-color: var(--process-lime);
+    color: #fff;
+}
+
+.process-step__number {
+    position: absolute;
+    top: -6px;
+    right: -3px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: var(--process-green);
+    border: 3px solid #fff;
+
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.process-step__marker svg {
+    width: 38px;
+    height: 38px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* STEP CARD */
+
+.process-step__card {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+
+    padding: 25px 22px 24px;
+
+    background: #fff;
+    border: 1px solid var(--process-border);
+    border-radius: 18px;
+
+    text-align: left;
+
+    box-shadow: 0 8px 30px rgba(25,66,66,.05);
+}
+
+.process-step__eyebrow {
+    display: block;
+    margin-bottom: 9px;
+
+    color: var(--process-lime);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.process-step__card h3 {
+    margin: 0 0 11px;
+
+    max-width: 100%;
+
+    color: var(--process-green);
+
+    font-size: 19px;
+    line-height: 1.25;
+
+    overflow-wrap: anywhere;
+}
+
+.process-step__card p {
+    margin: 0;
+
+    max-width: 100%;
+
+    color: var(--process-muted);
+
+    font-size: 14px;
+    line-height: 1.55;
+
+    overflow-wrap: break-word;
+}
+
+.process-step__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    margin-top: 16px;
+}
+
+.process-step__tag {
+    display: inline-flex;
+
+    padding: 6px 9px;
+
+    border-radius: 7px;
+
+    background: var(--process-bg);
+    color: var(--process-green);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* RESULT */
+
+.process-schema__result {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px 34px;
+
+    background: var(--process-green);
+    border-radius: 22px;
+
+    overflow: hidden;
+}
+
+.process-schema__result-text {
+    min-width: 0;
+}
+
+.process-schema__result-title {
+    margin: 0 0 7px;
+
+    color: #fff;
+
+    font-size: 22px;
+}
+
+.process-schema__result-text p {
+    margin: 0;
+
+    color: rgba(255,255,255,.78);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.process-schema__result .btn {
+    flex-shrink: 0;
+
+    background: #fff;
+    color: var(--process-green);
+    border-color: #fff;
+}
 
         /* DOCTORS */
         #doctors { background: rgba(255,255,255,.96); }
@@ -531,10 +800,6 @@
             .route-methods-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
             #diagnostics .grid-3 { grid-template-columns: repeat(2,minmax(0,1fr)); }
             #diagnostics .service-card:nth-child(3) { grid-column: 1 / -1; min-height: auto; }
-            .process-schema__flow { grid-template-columns: repeat(3,minmax(0,1fr)); }
-            .process-schema__flow::before { display:none; }
-            .process-step { align-items:flex-start; }
-            .process-step__marker { margin-left:20px; }
             .proof-block { grid-template-columns:1fr; }
             .proof-block .hero-photos { height:360px; }
             .contacts-grid { grid-template-columns:1fr; gap:28px; }
@@ -649,23 +914,116 @@
             #diagnostics .service-card h3 { font-size:1.15rem; }
             #diagnostics .service-card p { font-size:.9rem; }
 
-            /* process */
-            .process-schema { padding:58px 0 64px; }
-            .process-schema__header { margin-bottom:36px; text-align:left; }
-            .process-schema__title { font-size:1.85rem; text-align:left; }
-            .process-schema__subtitle { margin:0; font-size:.95rem; text-align:left; }
-            .process-schema__flow { display:flex; flex-direction:column; gap:0; margin-bottom:30px; }
-            .process-schema__flow::before { display:block; top:36px; bottom:36px; left:34px; right:auto; width:3px; height:auto; background:linear-gradient(180deg,var(--process-green),var(--process-lime)); }
-            .process-step { display:grid; grid-template-columns:72px 1fr; align-items:start; margin-bottom:18px; }
-            .process-step__marker { width:62px; height:62px; margin:0; box-shadow:0 0 0 5px #fff,0 6px 18px rgba(12,102,102,.1); }
-            .process-step__marker svg { width:27px; height:27px; }
-            .process-step__number { width:23px; height:23px; font-size:9px; }
-            .process-step__card { padding:17px; border-radius:14px; }
-            .process-step__card h3 { font-size:1.05rem; }
-            .process-step__card p { font-size:.86rem; }
-            .process-schema__result { flex-direction:column; align-items:stretch; gap:18px; padding:22px; border-radius:18px; }
-            .process-schema__result-title { font-size:1.25rem; color:#fff; }
-            .process-schema__result .btn { width:100%; }
+@media (max-width: 600px) {
+
+    .process-schema {
+        padding: 58px 0 64px;
+    }
+
+    .process-schema__header {
+        margin-bottom: 36px;
+        text-align: left;
+    }
+
+    .process-schema__title {
+        font-size: 1.85rem;
+        line-height: 1.1;
+        text-align: left;
+    }
+
+    .process-schema__subtitle {
+        margin: 0;
+
+        font-size: .95rem;
+        line-height: 1.5;
+
+        text-align: left;
+    }
+
+    .process-step {
+        grid-template-columns: 64px minmax(0, 1fr);
+        column-gap: 8px;
+    }
+
+    .process-schema__flow::before {
+        left: 29px;
+    }
+
+    .process-step__marker {
+        width: 58px;
+        height: 58px;
+    }
+
+    .process-step__card {
+        padding: 16px;
+    }
+
+    .process-step__card h3 {
+        font-size: 1rem;
+        line-height: 1.25;
+
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .process-step__card p {
+        font-size: .86rem;
+    }
+
+    .process-schema__result {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 18px;
+
+        padding: 22px;
+
+        border-radius: 18px;
+    }
+
+    .process-schema__result-title {
+        font-size: 1.25rem;
+    }
+
+    .process-schema__result .btn {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* VERY SMALL MOBILE */
+
+@media (max-width: 380px) {
+
+    .process-step {
+        grid-template-columns: 54px minmax(0, 1fr);
+        column-gap: 6px;
+    }
+
+    .process-step__marker {
+        width: 48px;
+        height: 48px;
+    }
+
+    .process-step__marker svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .process-schema__flow::before {
+        left: 23px;
+    }
+
+    .process-step__card {
+        padding: 14px;
+    }
+
+    .process-step__card h3 {
+        font-size: .96rem;
+    }
+}
 
             /* doctors */
             #doctors { padding:58px 0; }
@@ -998,39 +1356,128 @@
 
         <section class="process-schema" id="process">
             <div class="container">
+
                 <div class="process-schema__header">
-                    <div class="process-schema__label">5 шагов</div>
-                    <h2 class="process-schema__title">От первого осмотра<br>до понятного маршрута лечения</h2>
-                    <p class="process-schema__subtitle">Врач последовательно разберётся в жалобах, при необходимости назначит диагностику и объяснит, что делать дальше</p>
+                    <div class="process-schema__label">3 шага</div>
+
+                    <h2 class="process-schema__title">
+                        От первого осмотра<br>
+                        до понятного маршрута лечения
+                    </h2>
+
+                    <p class="process-schema__subtitle">
+                        Врач последовательно разберётся в жалобах, при необходимости проведёт диагностику,
+                        объяснит причину симптомов и определит дальнейшую тактику лечения.
+                    </p>
                 </div>
 
                 <div class="process-schema__flow">
+
+                    <!-- ШАГ 1 -->
                     <article class="process-step">
-                        <div class="process-step__marker"><span class="process-step__number">01</span><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 12h28a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4H23l-9 7v-7h-4a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4Z"/><path d="M15 21h18"/><path d="M15 27h12"/></svg></div>
-                        <div class="process-step__card"><span class="process-step__eyebrow">Знакомство</span><h3>Жалобы и осмотр</h3><p>Врач уточняет, что беспокоит, когда появилась боль или произошла травма, и проводит осмотр.</p></div>
+                        <div class="process-step__marker">
+                            <span class="process-step__number">01</span>
+
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <rect x="8" y="8" width="32" height="32" rx="5"/>
+                                <path d="M15 31l6-7 5 4 7-9"/>
+                                <circle cx="33" cy="18" r="3"/>
+                            </svg>
+                        </div>
+
+                        <div class="process-step__card">
+                            <span class="process-step__eyebrow">Первый этап</span>
+
+                            <h3>Осмотр и диагностика</h3>
+
+                            <p>
+                                Врач уточняет жалобы, проводит осмотр и определяет, нужны ли дополнительные
+                                исследования для уточнения состояния.
+                            </p>
+
+                            <div class="process-step__tags">
+                                <span class="process-step__tag">УЗИ</span>
+                                <span class="process-step__tag">Рентген</span>
+                            </div>
+                        </div>
                     </article>
+
+
+                    <!-- ШАГ 2 -->
                     <article class="process-step">
-                        <div class="process-step__marker"><span class="process-step__number">02</span><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="32" rx="5"/><path d="M15 31l6-7 5 4 7-9"/><circle cx="33" cy="18" r="3"/></svg></div>
-                        <div class="process-step__card"><span class="process-step__eyebrow">При необходимости</span><h3>Диагностика</h3><p>Если осмотра недостаточно, врач определит, какое исследование необходимо для уточнения состояния.</p><div class="process-step__tags"><span class="process-step__tag">УЗИ</span><span class="process-step__tag">Рентген</span></div></div>
+                        <div class="process-step__marker">
+                            <span class="process-step__number">02</span>
+
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M15 7h18a4 4 0 0 1 4 4v30H11V11a4 4 0 0 1 4-4Z"/>
+                                <path d="M18 17h12"/>
+                                <path d="M18 24h12"/>
+                                <path d="M18 31h7"/>
+                                <path d="m28 32 3 3 6-7"/>
+                            </svg>
+                        </div>
+
+                        <div class="process-step__card">
+                            <span class="process-step__eyebrow">Разбираемся</span>
+
+                            <h3>Диагноз</h3>
+
+                            <p>
+                                Врач сопоставляет результаты осмотра и исследований и объясняет,
+                                с чем связаны ваши симптомы.
+                            </p>
+                        </div>
                     </article>
-                    <article class="process-step">
-                        <div class="process-step__marker"><span class="process-step__number">03</span><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 7h18a4 4 0 0 1 4 4v30H11V11a4 4 0 0 1 4-4Z"/><path d="M18 17h12"/><path d="M18 24h12"/><path d="M18 31h7"/><path d="m28 32 3 3 6-7"/></svg></div>
-                        <div class="process-step__card"><span class="process-step__eyebrow">Разбираемся</span><h3>Диагноз</h3><p>Врач сопоставляет результаты осмотра и исследований и объясняет, с чем связаны ваши симптомы.</p></div>
-                    </article>
-                    <article class="process-step">
-                        <div class="process-step__marker"><span class="process-step__number">04</span><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="8" width="28" height="32" rx="4"/><path d="M17 17h14"/><path d="M17 24h14"/><path d="M17 31h8"/><circle cx="14" cy="17" r="1"/><circle cx="14" cy="24" r="1"/><circle cx="14" cy="31" r="1"/></svg></div>
-                        <div class="process-step__card"><span class="process-step__eyebrow">Следующий шаг</span><h3>План лечения</h3><p>Вы получаете понятный план: что рекомендуется делать, какие методы могут применяться и как будет проходить лечение.</p></div>
-                    </article>
+
+
+                    <!-- ШАГ 3 -->
                     <article class="process-step process-step--final">
-                        <div class="process-step__marker"><span class="process-step__number">05</span><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 35h32"/><path d="M12 31 20 23l6 5 11-13"/><path d="M31 15h6v6"/></svg></div>
-                        <div class="process-step__card"><span class="process-step__eyebrow">Динамика</span><h3>Контроль результата</h3><p>Если это необходимо, врач оценивает изменения и корректирует дальнейший план лечения.</p></div>
+                        <div class="process-step__marker">
+                            <span class="process-step__number">03</span>
+
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M8 35h32"/>
+                                <path d="M12 31 20 23l6 5 11-13"/>
+                                <path d="M31 15h6v6"/>
+                            </svg>
+                        </div>
+
+                        <div class="process-step__card">
+                            <span class="process-step__eyebrow">Лечение и контроль</span>
+
+                            <h3>Динамическое наблюдение</h3>
+
+                            <p>
+                                Вы получаете понятный план лечения. При необходимости врач наблюдает
+                                изменения в динамике, оценивает результат и корректирует дальнейшую тактику.
+                            </p>
+                        </div>
                     </article>
+
                 </div>
 
+
                 <div class="process-schema__result">
-                    <div class="process-schema__result-text"><h3 class="process-schema__result-title">Не знаете, с чего начать?</h3><p>Начните с консультации травматолога-ортопеда. Врач проведёт осмотр и определит, нужна ли дополнительная диагностика.</p></div>
-                    <button class="btn" type="button" onclick="openModal('consultModal')">Записаться на приём</button>
+                    <div class="process-schema__result-text">
+                        <h3 class="process-schema__result-title">
+                            Не знаете, с чего начать?
+                        </h3>
+
+                        <p>
+                            Начните с консультации травматолога-ортопеда. Врач проведёт осмотр
+                            и определит, нужна ли дополнительная диагностика.
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn"
+                        type="button"
+                        onclick="openModal('consultModal')"
+                    >
+                        Записаться на приём
+                    </button>
                 </div>
+
             </div>
         </section>
 
@@ -1093,9 +1540,9 @@
 
                 <div class="proof-block">
                     <div class="hero-photos">
-                        <div class="photo-placeholder photo-main"><img src="img/obor1.webp" alt="Оборудование клиники" loading="lazy"></div>
+                        <div class="photo-placeholder photo-main"><img src="img/rentgen.webp" alt="Оборудование клиники" loading="lazy"></div>
                         <div class="photo-placeholder"><img src="img/centrif.webp" alt="Фото клиники 2" loading="lazy"></div>
-                        <div class="photo-placeholder"><img src="img/rentgen.webp" alt="Фото клиники 3" loading="lazy"></div>
+                        <div class="photo-placeholder"><img src="img/obor1.webp" alt="Фото клиники 3" loading="lazy"></div>
                         <div class="photo-placeholder"><img src="img/obor4.webp" alt="Фото клиники 4" loading="lazy"></div>
                         <div class="photo-placeholder"><img src="img/obor2.webp" alt="Фото клиники 5" loading="lazy"></div>
                         <div class="photo-placeholder"><img src="img/obor2.webp" alt="Фото клиники 5" loading="lazy"></div>
