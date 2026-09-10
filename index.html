@@ -316,6 +316,40 @@
         .why-us__icon-wrap img, .why-us__icon-wrap svg { width: 100%; height: 100%; object-fit: contain; }
         .why-us__btn-wrap { text-align: center; }
 
+        /* WHY US CTA */
+        .why-us__cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+            margin-top: 34px;
+            padding: 30px 34px;
+            background: var(--primary);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(12,102,102,.14);
+        }
+        .why-us__cta-text { min-width: 0; }
+        .why-us__cta-title {
+            margin: 0;
+            max-width: 780px;
+            color: #fff;
+            font-size: 22px;
+            line-height: 1.35;
+            text-align: left;
+        }
+        .why-us__cta .btn {
+            flex-shrink: 0;
+            background: #fff;
+            color: var(--primary);
+            border-color: #fff;
+        }
+        .why-us__cta .btn:hover {
+            background: #f7f9f9;
+            color: var(--primary-dark);
+            border-color: #f7f9f9;
+        }
+
         /* ROUTES */
         .interactive-block-routes { background-image: linear-gradient(rgba(255,255,255,.84), rgba(255,255,255,.95)), url('img/priemnaya.webp'); background-size: cover; background-position: center; padding: 80px 0 0; overflow: hidden; }
         .routes-header { max-width: 760px; margin: 0 auto 45px; text-align: center; }
@@ -1001,6 +1035,21 @@
             .why-us__icon-wrap { width:58px; height:58px; margin:0; }
             .why-us__item-text, .why-us__item-text-white { margin:0; }
             .why-us__btn-wrap .btn { width:100%; }
+            .why-us__cta {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 18px;
+                margin-top: 26px;
+                padding: 22px;
+                border-radius: 18px;
+            }
+            .why-us__cta-title {
+                font-size: 1.2rem;
+                line-height: 1.35;
+            }
+            .why-us__cta .btn {
+                width: 100%;
+            }
 
             /* routes */
             .interactive-block-routes { padding-top:56px; }
@@ -2274,7 +2323,13 @@
                         <div class="why-us__icon-wrap"><img src="img/heart.svg" alt="отзывы" loading="lazy"></div>
                     </li>
                 </ul>
-                <div class="why-us__btn-wrap"><button class="btn" onclick="openModal('consultModal')">Записаться на приём</button></div>
+
+                <div class="why-us__cta">
+                    <div class="why-us__cta-text">
+                        <h3 class="why-us__cta-title">Ответьте на 3 простых вопроса — и мы подскажем нужного специалиста и метод лечения</h3>
+                    </div>
+                    <button class="btn" type="button" onclick="openModal('quizModal')">Подобрать план лечения</button>
+                </div>
             </div>
         </section>
 
@@ -3396,8 +3451,10 @@
     <footer id="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col"><div class="footer__logo"><img src="logo.svg" alt="Медклик Травма"></div><p style="color:rgba(255,255,255,.7);font-size:.8rem;">Лицензия: Л041-01125-54/00586567</p></div>
-                <div class="footer-col"><h4>Прайс-лист</h4><ul class="price-list"><li><span>Консультация травматолога</span><span>2900 ₽</span></li><li><span>УЗИ суставов</span><span>от 1800 ₽</span></li><li><span>Рентген</span><span>от 1500 ₽</span></li><li><span>PRP-терапия</span><span>от 8000 ₽</span></li></ul></div>
+                <div class="footer-col"><div class="footer__logo"><img src="logo.svg" alt="Медклик Травма"></div><p style="color:rgba(255,255,255,.7);font-size:.8rem;">Лицензия: Л041-01125-54/00586567</p>
+                            <p style="color:rgba(255,255,255,.7);font-size:.8rem;"><a href="https://medclick.info/docs/" target="_blank">Юридическая информация</a></p></div>
+
+                <div class="footer-col"><h4><a href="https://medclick.info/price/" target="_blank">Прайс-лист</a></h4><ul class="price-list"><li><span>Консультация травматолога</span><span>2900 ₽</span></li><li><span>УЗИ суставов</span><span>от 1800 ₽</span></li><li><span>Рентген</span><span>от 1500 ₽</span></li><li><span>PRP-терапия</span><span>от 8000 ₽</span></li></ul></div>
                 <div class="footer-col"><h4>Навигация</h4><ul><li><a href="#routes">Травмы</a></li><li><a href="#routes">Суставы</a></li><li><a href="#diagnostics">Диагностика</a></li><li><a href="#routes">Лечение</a></li><li><a href="#doctors">Врачи</a></li><li><a href="#price">Цены</a></li><li><a href="#proof">Статьи / FAQ</a></li></ul></div>
                 <div class="footer-col"><h4>Контакты</h4><p>г. Новосибирск, Новогодняя улица 23/2</p><p><a href="tel:+73832051561" style="color:#fff;font-weight:700;">+7 (383) 205 15 61</a></p><p><a href="mailto:nsk@mnogoclinica.ru">nsk@mnogoclinica.ru</a></p><p>пн-сб с 07.30 до 21.30 / вс с 8:00 до 21:30</p></div>
             </div>
