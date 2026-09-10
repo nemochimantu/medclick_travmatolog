@@ -986,11 +986,17 @@
             .section-subtitle { font-size: .95rem; margin-bottom: 30px; text-align:left; }
             .bg-bones { display:none; }
             .btn, .btn-green, .btn-white { min-height:50px; padding:13px 18px; }
+            .header__logo-img {
+                height: 42px;
+                width: auto;
+                max-width: 150px;
+                flex-shrink: 0;
+                object-fit: contain;
+            }
 
             /* mobile header/menu */
             .header-inner { min-height:66px; padding:8px 0; gap:8px; }
             .header__logo-link { flex:1; gap:8px; overflow:hidden; }
-            .header__logo-img { height:34px; }
             .header__clinic-info { flex-direction:column; align-items:flex-start; gap:0; overflow:hidden; }
             .header__logo-text { max-width:100%; font-size:10px; line-height:1.2; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
             .header__logo-text--schedule { padding:0; border:0; font-size:9px; color:#677777; }
@@ -1271,7 +1277,6 @@
 
         @media (max-width: 420px) {
             .container { width: calc(100% - 24px); }
-            .header__logo-img { height:31px; }
             .header__logo-text--address { font-size:9px; }
             .header__logo-text--schedule { display:none; }
             .hero-content h1 { font-size:1.95rem; }
