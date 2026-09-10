@@ -1935,6 +1935,195 @@
     }
 }
 
+
+
+/* ========================================
+   MOBILE VISUAL FIXES — 2026-09-10
+======================================== */
+
+/* Мобильная копия hero-фотографий скрыта на десктопе */
+.hero-photos--mobile {
+    display: none;
+}
+
+.hero-promo__discount {
+    font: inherit;
+}
+
+@media (max-width: 768px) {
+
+    /* 1. Врачи: показываем фото целиком, с приоритетом верхней части */
+    #doctors .doctor-img-wrap {
+        width: 100%;
+        height: 360px;
+        flex: none;
+        overflow: hidden;
+        background: #f3f6f6;
+    }
+
+    #doctors .doctor-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center top;
+    }
+
+    /* 2. Маршруты: сохраняем правую часть исходного изображения на мобильных */
+    #routes .route-card__visual {
+        min-height: 210px;
+        background-size: cover, contain;
+        background-position: center, right center;
+        background-repeat: no-repeat, no-repeat;
+        background-color: var(--primary);
+    }
+
+    /* 3. Hero-фото сразу после подзаголовка */
+    #hero .hero-photos--desktop {
+        display: none !important;
+    }
+
+    #hero .hero-photos--mobile {
+        display: grid !important;
+        width: 100%;
+        height: 300px;
+        margin: 4px 0 26px;
+        gap: 8px;
+        grid-template-columns: 1.18fr .82fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    #hero .hero-photos--mobile .photo-main {
+        grid-row: 1 / 3;
+    }
+
+    #hero .hero-photos--mobile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 4. Промо: крупнее и заметнее */
+    #hero .hero-promo {
+        margin: 0 0 24px;
+        padding: 22px 18px;
+        gap: 19px;
+        border: 3px solid var(--lime);
+        border-radius: 17px;
+        background: linear-gradient(135deg, #ffffff 0%, #fbfde9 58%, #f3f8d7 100%);
+        box-shadow: 0 10px 28px rgba(12,102,102,.16), 0 0 0 4px rgba(165,193,48,.08);
+    }
+
+    #hero .hero-promo__main {
+        gap: 14px;
+        align-items: center;
+    }
+
+    #hero .hero-promo__icon {
+        width: 60px;
+        height: 60px;
+        background: var(--lime);
+        box-shadow: 0 7px 16px rgba(165,193,48,.28);
+    }
+
+    #hero .hero-promo__icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    #hero .hero-promo__text {
+        min-width: 0;
+        flex: 1;
+    }
+
+    #hero .hero-promo__text h3 {
+        margin: 0;
+        color: var(--primary);
+        font-size: 1.08rem;
+        line-height: 1.25;
+    }
+
+    #hero .hero-promo__discount {
+        display: inline-flex;
+        margin-bottom: 6px;
+        padding: 5px 10px;
+        border-radius: 8px;
+        background: var(--lime);
+        color: #fff;
+        font-size: 1.28rem;
+        line-height: 1.1;
+        box-shadow: 0 4px 10px rgba(165,193,48,.2);
+    }
+
+    #hero .hero-promo__text p {
+        margin: 5px 0 0;
+        color: var(--primary);
+        font-size: .9rem;
+        font-weight: 600;
+    }
+
+    #hero .hero-promo__timer {
+        padding-top: 2px;
+    }
+
+    #hero .timer-label {
+        margin-bottom: 10px;
+        color: #536262;
+        font-size: .76rem;
+        font-weight: 700;
+    }
+
+    #hero .timer-display {
+        gap: 7px;
+    }
+
+    #hero .timer-unit {
+        min-width: 0;
+        flex: 1 1 0;
+        padding: 10px 8px;
+        border-radius: 10px;
+    }
+
+    #hero .timer-unit span {
+        font-size: 1.55rem;
+    }
+
+    #hero .timer-unit small {
+        font-size: .62rem;
+    }
+
+    #hero .timer-sep {
+        font-size: 1.45rem;
+    }
+}
+
+@media (max-width: 420px) {
+    #doctors .doctor-img-wrap {
+        height: 320px;
+    }
+
+    #routes .route-card__visual {
+        min-height: 195px;
+    }
+
+    #hero .hero-photos--mobile {
+        height: 260px;
+        margin-bottom: 22px;
+    }
+
+    #hero .hero-promo {
+        padding: 20px 16px;
+        gap: 17px;
+    }
+
+    #hero .hero-promo__icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    #hero .hero-promo__discount {
+        font-size: 1.18rem;
+    }
+}
 </style>
 </head>
 <body>
@@ -1985,6 +2174,13 @@
                     <h1>Центр современной<br>травматологии<br>и восстановления суставов</h1>
                     <p class="hero-subtitle">Травматолог-ортопед + диагностика в одной клинике:<br><strong>УЗИ, рентген, травмпункт</strong></p>
 
+                    <!-- Фото hero: отдельная мобильная версия сразу после подзаголовка -->
+                    <div class="hero-photos hero-photos--mobile" aria-hidden="true">
+                        <div class="photo-placeholder photo-main"><img src="img/pozvonpoc.webp" alt=""></div>
+                        <div class="photo-placeholder"><img src="img/3.webp" alt=""></div>
+                        <div class="photo-placeholder"><img src="img/2.webp" alt=""></div>
+                    </div>
+
                     <div class="hero-features">
                         <div class="hero-feature clickable" onclick="openModal('quizModal')">
                             <div class="hero-feature-icon">?</div>
@@ -2000,7 +2196,7 @@
                                     <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
                                 </div>
                                 <div class="hero-promo__text">
-                                    <h3>Скидка 600 ₽ на первичный приём</h3>
+                                    <h3><span class="hero-promo__discount">Скидка 600 ₽</span> на первичный приём</h3>
                                     <p>Успейте воспользоваться!</p>
                                 </div>
                             </div>
@@ -2033,7 +2229,7 @@
                     </div>
                 </div>
 
-                <div class="hero-photos">
+                <div class="hero-photos hero-photos--desktop">
                     <div class="photo-placeholder photo-main"><img src="img/pozvonpoc.webp" alt="Главное фото клиники"></div>
                     <div class="photo-placeholder"><img src="img/3.webp" alt="Фото клиники 2"></div>
                     <div class="photo-placeholder"><img src="img/2.webp" alt="Фото клиники 3"></div>
